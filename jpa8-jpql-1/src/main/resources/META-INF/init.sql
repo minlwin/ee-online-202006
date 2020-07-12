@@ -102,3 +102,17 @@ insert into Customer (name, phone, email, address_id) values ('Customer 21', '09
 insert into Customer (name, phone, email, address_id) values ('Customer 22', '09-8688-922', 'customer22@gmail.com', 22);
 insert into Customer (name, phone, email, address_id) values ('Customer 23', '09-8688-923', 'customer23@gmail.com', 23);
 insert into Customer (name, phone, email, address_id) values ('Customer 24', '09-8688-924', 'customer24@gmail.com', 24);
+
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (1, 180000 ,'2020-07-10', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (2, 350000 ,'2020-07-10', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (5, 210000 ,'2020-07-10', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (22, 1120000 ,'2020-07-15', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (20, 5300000 ,'2020-07-15', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (5, 340000 ,'2020-07-15', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (20, 150000 ,'2020-07-15', '2020-07-30');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (1, 500000 ,'2020-08-01', '2020-08-15');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (5, 1200000 ,'2020-08-01', '2020-08-15');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (18, 250000 ,'2020-08-01', '2020-08-15');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (1, 100000 ,'2020-08-01', '2020-08-15');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (17, 150000 ,'2020-08-01', '2020-08-15');
+insert into invoice(customer_id, paid_amount, invoice_date, paid_date) values (10, 3000000 ,'2020-08-01', '2020-08-15');
