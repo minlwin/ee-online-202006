@@ -16,6 +16,8 @@ import lombok.Data;
 
 @Entity
 @Data
+@NamedQuery(name = "Invoice.getSummary", 
+	query = "select new com.jdc.update.service.dto.DailyInvoiceSummary(i.invoiceDate, sum(i.paidAmount), avg(i.paidAmount), min(i.paidAmount), max(i.paidAmount)) from Invoice i where i.invoiceDate between :from and :to group by i.invoiceDate order by i.invoiceDate")
 @NamedQuery(name = "Invoice.searchDailyInvoices",
 		query = "select new com.jdc.update.service.dto.DailyInvoiceDTO(i.invoiceDate, count(i), sum(i.paidAmount)) from Invoice i group by i.invoiceDate having i.invoiceDate = :date order by i.invoiceDate")
 @NamedQuery(name = "Invoice.searchMaxInvoice", query = "select i from Invoice i where i.paidAmount = (select max(iv.paidAmount) from Invoice iv)")

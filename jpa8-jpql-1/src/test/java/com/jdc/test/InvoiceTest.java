@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import com.jdc.update.entity.Invoice;
 import com.jdc.update.service.InvoiceService;
 import com.jdc.update.service.dto.DailyInvoiceDTO;
+import com.jdc.update.service.dto.DailyInvoiceSummary;
 
 class InvoiceTest {
 	
@@ -113,5 +114,23 @@ class InvoiceTest {
 		assertNotNull(dto);
 		assertEquals(3, dto.getInvoices());
 		assertEquals(740000, dto.getTotal());
+	}
+	
+	@Test
+	void testForHomeWork() {
+		LocalDate from = LocalDate.of(2020, 7, 1);
+		LocalDate to = LocalDate.of(2020, 7, 30);
+		
+		List<DailyInvoiceSummary> list = service.getSummary(from, to);
+		assertNotNull(list);
+		assertEquals(2, list.size());
+		
+		DailyInvoiceSummary data1 = list.get(0);
+		assertEquals(from.withDayOfMonth(10), data1.getInvoiceDate());
+		
+		
+		DailyInvoiceSummary data2 = list.get(1);
+		assertEquals(from.withDayOfMonth(15), data2.getInvoiceDate());
+		
 	}
 }

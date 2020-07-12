@@ -78,8 +78,10 @@ public class InvoiceService {
 	}
 
 	public List<DailyInvoiceSummary> getSummary(LocalDate from, LocalDate to) {
-		// TODO Homework
-		return null;
+		TypedQuery<DailyInvoiceSummary> query = em.createNamedQuery("Invoice.getSummary", DailyInvoiceSummary.class);
+		query.setParameter("from", from);
+		query.setParameter("to", to);
+		return query.getResultList();
 	}
 	
 
