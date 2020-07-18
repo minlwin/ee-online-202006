@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Post Information</title>
+</head>
+<body>
+	
+	<h1>Post Information</h1>
+	
+	<form action="http" method="post">
+	
+		<table>
+			<tr>
+				<td>Name</td>
+				<td>
+					<input type="text" name="name" />
+				</td>
+			</tr>
+			<tr>
+				<td>Subject</td>
+				<td>
+					<select name="subject">
+						<option value="Java SE">Java SE</option>
+						<option value="Java EE">Java EE</option>
+						<option value="Spring">Spring</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<label for="male">
+						<input id="male" type="radio" name="gender" value="Male" />
+						Male
+					</label>
+					
+					<label for="female">
+						<input type="radio" name="gender" id="female" value="Female" />
+						Female
+					</label>
+				
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Interest</td>
+				<td>
+				
+					<label for="mobile">
+						<input type="checkbox" name="interest" id="mobile" value="Mobile" />
+						Mobile
+					</label>
+				
+					<label for="desktop">
+						<input type="checkbox" name="interest" id="desktop" value="Desktop" />
+						Desktop
+					</label>
+
+					<label for="web">
+						<input type="checkbox" name="interest" id="web" value="Web Application" />
+						Web Application
+					</label>
+
+				</td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<input type="submit" value="Send" />
+				</td>
+			</tr>
+			
+			
+		</table>
+	
+	</form>
+	
+	
+	
+	
+</body>
+</html>
