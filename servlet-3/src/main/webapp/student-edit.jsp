@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Edit Student</title>
-<link rel="stylesheet" href="/resources/css/bootstrap.min.css" />
+
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/popper.min.js"></script>
@@ -25,7 +26,7 @@
 					<!-- Name -->
 					<div class="form-group">
 						<label>Name</label>
-						<input required="required" name="name" type="text" class="form-control" placeholder="Enter Student Name" />
+						<input required="required" name="name" type="text" class="form-control " placeholder="Enter Student Name" />
 					</div>
 					
 					<!-- Phone -->
