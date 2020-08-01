@@ -14,10 +14,49 @@
 
 	<c:import url="/common/menu.jsp"></c:import>
 	
-	<div class="container">
+	<div class="container-fluid">
 		
 		<h2>${title}</h2>
 		
+		
+		<div class="row">
+		
+			<div class="col-4">
+				<c:url value="/products" var="save"></c:url>
+				<form action="${save}" method="post">
+					
+					<input type="hidden" value="${product.id}" name="id">
+					
+					<div class="form-group">
+						<label>Category</label>
+						<select name="category" class="form-control">
+							<c:forEach items="${categories}" var="c">
+								<option value="${c.id}" ${c.id eq product.category.id ? 'selected' : ''}>${c.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label>Product Name</label>
+						<input name="name" value="${product.name}" type="text" placeholder="Enter Name" required="required" class="form-control" />
+					</div>
+					
+					<div class="form-group">
+						<label>Price</label>
+						<input type="number" value="${product.price}" name="price" class="form-control" placeholder="Enter Price" required="required" />
+					</div>
+					
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit">
+							<i class="fa fa-save"></i> Save
+						</button>
+					</div>
+								
+				</form>
+			
+			</div>
+		
+		</div>
 	</div>
 
 </body>

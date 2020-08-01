@@ -8,6 +8,7 @@
 <title>Products</title>
 
 <link rel="stylesheet" href="../../resources/bootstrap.min.css" />
+<script type="text/javascript" src="../../resources/jquery.min.js"></script>
 
 <c:import url="/common/resources.jsp"></c:import>
 
@@ -16,7 +17,7 @@
 
 	<c:import url="/common/menu.jsp"></c:import>
 	
-	<div class="container">
+	<div class="container-fluid">
 	
 		<h2>Products</h2>
 		
@@ -24,21 +25,26 @@
 		
 			<div class="form-group mr-4">
 				<label class="mr-2">Category</label>
-				<select name="category" class="form-control">
+				<select name="category" class="form-control" >
 					<option value="0">All Category</option>
 					<c:forEach items="${categories}" var="c">
-						<option value="${c.id}">${c.name}</option>
+						<option value="${c.id}" ${param.category eq c.id ? 'selected' : ''}>${c.name}</option>
 					</c:forEach>
 				</select>
 			</div>
 			
 			<div class="form-group mr-4">
 				<label class="mr-2">Product</label>
-				<input name="name" type="text" class="form-control" placeholder="Search Name" />
+				<input name="name" type="text" class="form-control" value="${param.name}" placeholder="Search Name" />
 			</div>
 			
 			<div class="form-group">
-				<button class="btn btn-primary">Search</button>
+				<button type="submit" class="btn btn-primary mr-2">
+					<i class="fa fa-search"></i> Search
+				</button>
+				<button id="uploadBtn" type="button" class="btn btn-danger">
+					<i class="fa fa-upload"></i> Upload
+				</button>
 			</div>
 		</form>
 		
@@ -50,7 +56,7 @@
 			</c:when>
 			
 			<c:otherwise>
-				<table>
+				<table class="table">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -88,6 +94,20 @@
 		
 	</div>
 	
+	<c:url value="/products/upload" var="upload"></c:url>
+	<form id="uploadForm" action="${upload}" method="post" enctype="multipart/form-data" class="d-none" >
+		<input id="uploadFile" type="file" name="file">
+	</form>
+	
+	
+	<script type="text/javascript">
+
+	$(() => {
+		$('#uploadBtn').click(() => $('#uploadFile').click())
+
+		$('#uploadFile').change(() => $('#uploadForm').submit())
+	})
+	</script>
 
 </body>
 </html>

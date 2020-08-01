@@ -5,18 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Products</title>
+<title>POS</title>
 	
-	<link rel="stylesheet" href="resources/bootstrap.min.css" />
-	
-	<script src="resources/jquery.min.js"></script>
-	<script src="resources/popper.min.js"></script>
-	<script src="resources/bootstrap.min.js"></script>
+<c:import url="/common/resources.jsp"></c:import>
 
 </head>
 <body>
 
 	<c:import url="/common/menu.jsp"></c:import>
+	
+	<div class="container-fluid">
+		
+		<div class="row">
+			
+			<div class="col-8">
+				<c:import url="/common/product-search.jsp"></c:import>
+			</div>
+			
+			<div class="col-4">
+				<c:import url="/common/sale-details.jsp"></c:import>
+			</div>
+		
+		</div>
+	
+	</div>
+
 	
 </body>
 </html>

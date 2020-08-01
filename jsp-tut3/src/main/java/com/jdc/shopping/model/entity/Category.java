@@ -14,6 +14,7 @@ import lombok.Data;
 @Entity
 @Data
 @NamedQuery(name = "Category.getAll", query = "select c from Category c")
+@NamedQuery(name = "Category.findByName", query = "select c from Category c where c.name = :name")
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;

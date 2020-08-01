@@ -23,10 +23,25 @@ public class Sale implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String email;
-	private String customer;
 	private LocalDateTime saleDate;
 	
 	@OneToMany(mappedBy = "sale", cascade = { CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private List<SaleDetails> details = new ArrayList<>();
+	
+	public void addDetails(SaleDetails sd) {
+		sd.setSale(this);
+		details.add(sd);
+	}
+	
+	public int getSubTotal() {
+		return details.stream().mapToInt(d -> d.getQuentity() * d.getProduct().getPrice()).sum();
+	}
+	
+	public int getTax() {
+		return getSubTotal() / 100 * 5;
+	}
+	
+	public int getTotal() {
+		return getSubTotal() + getTax();
+	}
 }

@@ -19,4 +19,8 @@ public class CategoryService {
 		return em.createNamedQuery("Category.getAll", Category.class).getResultList();
 	}
 
+	public Category findById(int id) {
+		return em.find(Category.class, id);
+	}
+
 }
