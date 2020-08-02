@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource 
+		name="jdbc/ProductDB" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="org.hsqldb.jdbc.JDBCDriver" 
+		url="jdbc:hsqldb:file:/Users/minlwin/databases/products/ProductDB" 
+		username="sa" 
+		password="sa"
+	 />
+</Context>
