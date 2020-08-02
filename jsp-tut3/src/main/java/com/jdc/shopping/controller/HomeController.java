@@ -20,14 +20,13 @@ import com.jdc.shopping.model.service.SaleService;
 
 @WebServlet(
 		urlPatterns = {
-				"/home", "/pos-search", "/add-to-cart"
+				"/home", "/add-to-cart"
 		}, loadOnStartup = 1
 )
 public class HomeController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
-	private CategoryService catService;
 	private ProductService proService;
 	private SaleService salService;
 	
@@ -41,9 +40,11 @@ public class HomeController extends HttpServlet{
 			getServletContext().setAttribute("emf", emf);
 		}
 		
-		catService = new CategoryService(emf.createEntityManager());
 		proService = new ProductService(emf.createEntityManager());
 		salService = new SaleService(emf.createEntityManager());
+
+		CategoryService catService = new CategoryService(emf.createEntityManager());
+		getServletContext().setAttribute("categories", catService.getAll());
 	}
 	
 	@Override
@@ -59,14 +60,34 @@ public class HomeController extends HttpServlet{
 		
 		String path = req.getServletPath();
 		
-		if("/pos-search".equals(path)) {
-			searchProduct(req);
-		} else if ("/add-to-cart".equals(path)) {
+		if ("/add-to-cart".equals(path)) {
 			addToCart(req);
 		}
 		
-		req.setAttribute("categories", catService.getAll());
+		searchProduct(req);
+		
 		getServletContext().getRequestDispatcher("/views/home.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String action = req.getParameter("action");
+		
+		HttpSession session = req.getSession(true);
+		
+		if("Clear".equals(action)) {
+			session.removeAttribute("cart");
+		} else if("Paid".equals(action)) {
+			Sale sale = (Sale) session.getAttribute("cart");
+			
+			if(null != sale && sale.getTotal() > 0) {
+				salService.save(sale);
+				session.removeAttribute("cart");
+			}
+		}
+		
+		resp.sendRedirect(req.getContextPath().concat("/home"));
 	}
 
 	private void addToCart(HttpServletRequest req) {

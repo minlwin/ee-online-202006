@@ -81,9 +81,6 @@ public class ProductController extends HttpServlet{
 			page = "/views/products/edit.jsp";
 		}
 		
-		// search category and add to request scope
-		req.setAttribute("categories", catService.getAll());
-		
 		getServletContext().getRequestDispatcher(page).forward(req, resp);
 	}
 	

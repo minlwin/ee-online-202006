@@ -7,7 +7,7 @@
 	<div class="card-body">
 		<h4 class="card-title">Search Product</h4>
 		
-		<c:url value="/pos-search" var="search"></c:url>
+		<c:url value="/home" var="search"></c:url>
 		<form action="${search}" class="form form-inline">
 			
 			<div class="form-row">
@@ -47,31 +47,31 @@
 			<th>ID</th>
 			<th>Category</th>
 			<th>Product</th>
-			<th>Price</th>
+			<th class="text-right">Price</th>
 			<th></th>
 		</tr>
 		
-		<tbody>
-			
-			<c:forEach items="${products}" var="p">
-				
-				<tr>
-					<td>${p.id}</td>
-					<td>${p.category.name}</td>
-					<td>${p.name}</td>
-					<td>${p.price}</td>
-					<td>
-						<c:url value="/add-to-cart" var="addToCart">
-							<c:param name="id" value="${p.id}"></c:param>
-						</c:url>
-						<a href="${addToCart}">
-							<i class="fa fa-cart-plus"></i>
-						</a>
-					</td>
-				</tr>
-			
-			</c:forEach>
-		
-		</tbody>
 	</thead>
+	<tbody>
+		
+		<c:forEach items="${products}" var="p">
+			
+			<tr>
+				<td>${p.id}</td>
+				<td>${p.category.name}</td>
+				<td>${p.name}</td>
+				<td class="text-right">${p.price}</td>
+				<td class="text-right">
+					<c:url value="/add-to-cart" var="addToCart">
+						<c:param name="id" value="${p.id}"></c:param>
+					</c:url>
+					<a href="${addToCart}">
+						<i class="fa fa-cart-plus"></i>
+					</a>
+				</td>
+			</tr>
+		
+		</c:forEach>
+	
+	</tbody>
 </table>

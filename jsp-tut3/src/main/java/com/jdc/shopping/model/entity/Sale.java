@@ -2,6 +2,7 @@ package com.jdc.shopping.model.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import lombok.Data;
 public class Sale implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,10 @@ public class Sale implements Serializable{
 	public void addDetails(SaleDetails sd) {
 		sd.setSale(this);
 		details.add(sd);
+	}
+	
+	public String getDate() {
+		return null == saleDate ? "" : saleDate.format(DF);
 	}
 	
 	public int getSubTotal() {

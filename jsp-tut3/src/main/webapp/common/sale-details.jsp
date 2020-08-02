@@ -6,15 +6,15 @@
 <div class="fluid card">
 	
 	<div class="card-body">
-		<h4 class="card-title"><i class="fa fa-shopping-cart"></i> Sale Details <span class="float-right">${cart.total}</span></h4>
+		<h4 class="card-title"><i class="fa fa-shopping-cart"></i> Sale Details <span class="float-right pr-2">${cart.total}</span></h4>
 		
 		<table class="table table-md">
 			<thead>
 				<tr>
 					<th>Product</th>
-					<th>Price</th>
-					<th>Qty</th>
-					<th>Total</th>
+					<th class="text-right">Price</th>
+					<th class="text-right">Qty</th>
+					<th class="text-right">Total</th>
 				</tr>
 			</thead>
 			
@@ -25,39 +25,43 @@
 					
 					<tr>
 						<td>${item.product.name}</td>
-						<td>${item.product.price}</td>
-						<td>${item.quentity}</td>
-						<td>${item.product.price * item.quentity}</td>
+						<td class="text-right">${item.product.price}</td>
+						<td class="text-right">${item.quentity}</td>
+						<td class="text-right">${item.product.price * item.quentity}</td>
 					</tr>
 				
 				</c:forEach>
 				
 				<tr class="table-primary">
 					<td colspan="3">Sub Total</td>
-					<td>${cart.subTotal}</td>
+					<td class="text-right">${cart.subTotal}</td>
 				</tr>
 				<tr>
 					<td colspan="3">Tax</td>
-					<td>${cart.tax}</td>
+					<td class="text-right">${cart.tax}</td>
 				</tr>
 				<tr class="table-primary">
 					<td colspan="3">Total</td>
-					<td>${cart.total}</td>
+					<td class="text-right">${cart.total}</td>
 				</tr>
 			</tbody>
 			
 		</table>
 		
-		<div class="form-row">
+		<c:url value="/home" var="cartAction"></c:url>
+		<form action="${cartAction}" method="post">
+			<div class="form-row">
+				
+				<div class="col">
+					<input class="btn btn-block btn-primary" type="submit" name="action" value="Clear">
+				</div>
 			
-			<div class="col">
-				<button class="btn btn-block btn-primary">Clear</button>
+				<div class="col">
+					<input class="btn btn-block btn-danger" type="submit" name="action" value="Paid">
+				</div>
 			</div>
 		
-			<div class="col">
-				<button class="btn btn-block btn-danger">Paid</button>
-			</div>
-		</div>
+		</form>
 	
 	</div>
 	

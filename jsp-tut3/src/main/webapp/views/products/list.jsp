@@ -8,7 +8,6 @@
 <title>Products</title>
 
 <link rel="stylesheet" href="../../resources/bootstrap.min.css" />
-<script type="text/javascript" src="../../resources/jquery.min.js"></script>
 
 <c:import url="/common/resources.jsp"></c:import>
 
