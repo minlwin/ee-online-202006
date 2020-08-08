@@ -3,7 +3,6 @@ package com.jdc.shopping.controller;
 import java.io.IOException;
 
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.jdc.shopping.model.entity.Product;
 import com.jdc.shopping.model.entity.Sale;
 import com.jdc.shopping.model.entity.SaleDetails;
-import com.jdc.shopping.model.service.CategoryService;
 import com.jdc.shopping.model.service.ProductService;
 import com.jdc.shopping.model.service.SaleService;
 
@@ -34,25 +32,8 @@ public class HomeController extends HttpServlet{
 	public void init() throws ServletException {
 		
 		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
-		
-		if(null == emf) {
-			emf = Persistence.createEntityManagerFactory("jsp-tut3");
-			getServletContext().setAttribute("emf", emf);
-		}
-		
 		proService = new ProductService(emf.createEntityManager());
 		salService = new SaleService(emf.createEntityManager());
-
-		CategoryService catService = new CategoryService(emf.createEntityManager());
-		getServletContext().setAttribute("categories", catService.getAll());
-	}
-	
-	@Override
-	public void destroy() {
-		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
-		if(null != emf && emf.isOpen()) {
-			emf.close();
-		}
 	}
 	
 	@Override
@@ -83,7 +64,7 @@ public class HomeController extends HttpServlet{
 			
 			if(null != sale && sale.getTotal() > 0) {
 				salService.save(sale);
-				session.removeAttribute("cart");
+				session.invalidate();
 			}
 		}
 		
