@@ -1,0 +1,52 @@
+{
+  "_from": "fontawesome-4.7",
+  "_id": "fontawesome-4.7@4.7.0",
+  "_inBundle": false,
+  "_integrity": "sha512-K+pJ9tR3Z+youCvMOtqwJyyM69dlAQflrahXTV3KExWTAFHqR+MgeEC/dF3Q7nUNOJRMOX8GIPzzGbnh4GMrkw==",
+  "_location": "/fontawesome-4.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "fontawesome-4.7",
+    "name": "fontawesome-4.7",
+    "escapedName": "fontawesome-4.7",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/fontawesome-4.7/-/fontawesome-4.7-4.7.0.tgz",
+  "_shasum": "985d66d225180600d78f5808f149ecbfeabcc11c",
+  "_spec": "fontawesome-4.7",
+  "_where": "/Users/minlwin/Desktop/css",
+  "author": {
+    "name": "Fontawesome Inc"
+  },
+  "bugs": {
+    "url": "https://github.com/mkg20001/fontawesome-4.7/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "The last release before v5 packaged, in case you need it",
+  "homepage": "https://github.com/mkg20001/fontawesome-4.7#readme",
+  "keywords": [
+    "fontawesome",
+    "4.7",
+    "oldversion"
+  ],
+  "license": "ISC",
+  "main": "css/font-awesome.min.css",
+  "name": "fontawesome-4.7",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkg20001/fontawesome-4.7.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "4.7.0"
+}
