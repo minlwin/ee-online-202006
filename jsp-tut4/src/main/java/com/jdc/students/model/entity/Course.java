@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@NamedQuery(name = "Course.getAll", query = "select c from Course c")
 public class Course implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -16,6 +18,7 @@ public class Course implements Serializable{
 	@GeneratedValue(strategy = IDENTITY)
 	private int id;
 	private String name;
+	private Level level;
 	private int fees;
 	private int hours;
 	private String description;
@@ -50,6 +53,14 @@ public class Course implements Serializable{
 
 	public int getHours() {
 		return hours;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 
 	public void setHours(int hours) {

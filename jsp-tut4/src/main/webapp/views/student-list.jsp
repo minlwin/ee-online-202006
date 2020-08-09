@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Students</title>
 
 <c:import url="/common/resources.jsp"></c:import>
 
@@ -13,7 +13,7 @@
 <body>
 
 	<c:import url="/common/menu.jsp"></c:import>
-	
+		
 
 </body>
 </html>

@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.jdc.students.model.entity.Account;
 
 @WebServlet({
 	"/home",
@@ -24,7 +27,21 @@ public class RegistrationServlet extends HttpServlet{
 		String view = null;
 		
 		if("/home".equals(path)) {
-			view = "/index.jsp";
+			
+			HttpSession session = req.getSession(true);
+			Account login = (Account) session.getAttribute("login");
+			
+			if(null == login) {
+				// anonymous
+				view = "/index.jsp";
+			} else {
+				// already login
+				// search registrations
+				// add to request scope
+				
+				view = "/views/registrations.jsp";
+			}
+			
 		} else {
 			view  = "/views/registration-edit.jsp";
 		}

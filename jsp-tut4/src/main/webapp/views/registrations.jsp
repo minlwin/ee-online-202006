@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Registration</title>
+<title>Registration</title>
 
 <c:import url="/common/resources.jsp"></c:import>
 

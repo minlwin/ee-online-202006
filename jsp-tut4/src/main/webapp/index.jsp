@@ -9,16 +9,49 @@
 
 <c:import url="/common/resources.jsp"></c:import>
 
-<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="resources/fontawesome-4.7/css/font-awesome.min.css" />
-
 </head>
 <body>
 
-
-	<c:import url="/common/menu.jsp"></c:import>
-
-	<h1>Using Listener</h1>	
+	
+	<div class="row ">
+		
+		<div class="col-4 m-auto">
+			
+			<div class="card login-form">
+				
+				<div class="card-body">
+				
+					<h3><i class="fa fa-sign-in mr-2"></i> Member Login</h3>
+					
+					<c:if test="${ not empty message }">
+						<div class="alert alert-warning">${message}</div>
+					</c:if>
+					
+					<c:url value="/login" var="login"></c:url>
+					<form action="${login}" method="post" class="form">
+						
+						<div class="form-group">
+							
+							<label for="loginId">Login Id</label>
+							<input type="text" name="loginId" required="required" placeholder="Enter Login Id" class="form-control" />
+						
+						</div>
+						
+						<div class="form-group">
+						
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required="required" />
+						</div>
+						
+						<button class="btn btn-primary">Member Login</button>
+					
+					</form>
+				</div>
+			
+			</div>
+		
+		</div>
+	</div>	
 
 </body>
 </html>
