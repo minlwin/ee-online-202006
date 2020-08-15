@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Hello JSF</title>
+</h:head> 
+<body> 
+
+
+	<h1>Hello JSF</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{helloBean.member.name}" />
+			
+			<h:outputLabel value="Phone" />
+			<h:inputText value="#{helloBean.member.phone}" />
+			
+			<h:outputLabel value="Email" />
+			<h:inputText value="#{helloBean.member.email}" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:commandButton actionListener="#{helloBean.save()}" value="Add" />
+		
+		</h:panelGrid>
+	
+	</h:form>
+	
+	<h:dataTable value="#{helloBean.list}" var="m">
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{m.name}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Phone</f:facet>
+			#{m.phone}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Email</f:facet>
+			#{m.email}
+		</h:column>
+	</h:dataTable>
+</body> 
+</html>
