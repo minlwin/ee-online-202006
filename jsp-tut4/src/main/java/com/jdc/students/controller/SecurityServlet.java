@@ -35,13 +35,19 @@ public class SecurityServlet extends HttpServlet{
 				String loginId = req.getParameter("loginId");
 				String password = req.getParameter("password");
 				
+				// check already login
+				Object result = getServletContext().getAttribute(loginId);
+				if(null != result) {
+					throw new RuntimeException("You are already login with other browser!");
+				}
+				
 				Account login = service.login(loginId, password);
 				
 				session.setAttribute("login", login);
 				
 			} catch (Exception e) {
 				
-				req.setAttribute("message", e.getCause().getMessage());
+				req.setAttribute("message", null == e.getCause() ? e.getMessage() : e.getCause().getMessage());
 				getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 				
 				return;
