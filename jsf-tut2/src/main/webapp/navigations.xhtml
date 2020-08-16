@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>Navigations</title>
+</h:head> 
+<body> 
+
+	<h1>Navigations</h1>
+	
+	<h2>Link Navigations</h2>
+	
+	<ul>
+		<li>
+			<h:link value="Navigate By Link" outcome="/index" />
+		</li>
+		<li>
+			<h:button value="Navigate By Button" outcome="/index"></h:button>
+		</li>
+	</ul>
+	
+	<hr />
+	
+	<h2>Navigation via Form Actions</h2>
+	
+	<h:form>
+		<h:commandLink action="index" value="Form Link" />
+	</h:form>
+	
+	<h:form>
+		<h:commandButton action="index" value="Form Button" />
+	</h:form>
+</body> 
+</html>
