@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>List Data</title>
+</h:head> 
+<body> 
+
+
+	<h3>Table View</h3>
+	
+	<h:dataTable value="#{listBean.list}" var="s">
+		
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{s.name}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Phone</f:facet>
+			#{s.phone}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Email</f:facet>
+			#{s.email}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Address</f:facet>
+			#{s.address}
+		</h:column>
+	</h:dataTable>
+	
+	<h3>UI Repeat</h3>
+	
+	
+	<ui:repeat var="s" value="#{listBean.list}">
+		
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Name" />
+			<h:outputText value="#{s.name}" />
+		
+			<h:outputLabel value="Phone" />
+			<h:outputText value="#{s.phone}" />
+
+			<h:outputLabel value="Email" />
+			<h:outputText value="#{s.email}" />
+
+			<h:outputLabel value="Address" />
+			<h:outputText value="#{s.address}" />
+		</h:panelGrid>
+		
+		<hr />
+			
+	</ui:repeat>
+</body> 
+</html>
