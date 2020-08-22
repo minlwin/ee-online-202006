@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough" >
+
+	<ui:composition template="/WEB-INF/layout.xhtml">
+	
+	
+		<ui:define name="title">Category Management</ui:define>
+		
+		<ui:define name="content">
+			
+			<div class="card">
+			
+				<div class="card-header">#{categoryEditBean.category.id == 0 ? 'Add New' : 'Edit'} Category</div>
+
+				<div class="card-body">
+					
+					<h:form styleClass="form-inline">
+						
+						<h:inputHidden value="#{categoryEditBean.category.id}" />
+						
+						<div class="form-group mr-2">
+							
+							<label class="mr-2" for="name">Name</label>
+							<h:inputText p:placeholder="Enter Category Name" styleClass="form-control" value="#{categoryEditBean.category.name}"  />
+							
+						</div>
+						
+						<h:commandButton action="#{categoryEditBean.save()}" value="Save" styleClass="btn btn-outline-info" />
+					
+					</h:form>
+				
+				</div>
+			</div>
+			
+			<h:dataTable value="#{categoryBean.list}" var="c" styleClass="table mt-4">
+				
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					#{c.id}
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{c.name}
+				</h:column>
+				
+				<h:column>
+					<h:link outcome="/views/categories" value="Edit">
+						<f:param name="id" value="#{c.id}"></f:param>
+					</h:link>
+				</h:column>
+
+			</h:dataTable>
+		
+		</ui:define>
+	</ui:composition>
+</html>

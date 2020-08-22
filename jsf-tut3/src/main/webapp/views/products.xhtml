@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:composition template="/WEB-INF/layout.xhtml">
+	
+		<ui:define name="title">Product Management</ui:define>
+		
+		<ui:define name="content">
+			
+			<div class="card">
+				<div class="card-header">Search</div>
+
+				<div class="card-body">
+					
+					<h:form styleClass="form-inline">
+						
+						<div class="form-group mr-4">
+							<label for="category" class="mr-2">Category</label>
+							<h:selectOneMenu styleClass="form-control" value="#{productBean.categoryId}">
+								<f:selectItem itemLabel="Search All" itemValue="0" />
+								<f:selectItems value="#{categoryBean.list}" var="c" itemLabel="#{c.name}" itemValue="#{c.id}" ></f:selectItems>
+							</h:selectOneMenu>
+						</div>
+						
+						<div class="form-group mr-2">
+							<label for="name" class="mr-2">Product Name</label>
+							<h:inputText value="#{productBean.productName}" styleClass="form-control" p:placeholder="Search Name" />
+						</div>
+						
+						<h:commandButton styleClass="btn btn-outline-info" action="#{productBean.search()}" value="Search" />
+					
+					</h:form>
+				
+				</div>
+				
+			</div>
+		
+			<h:dataTable value="#{productBean.list}" styleClass="table table-stripe mt-4" var="p">
+				
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					#{p.id}
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">Category</f:facet>
+					#{p.category.name}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{p.name}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					#{p.price} MMK
+				</h:column>
+			</h:dataTable>
+
+		</ui:define>
+	</ui:composition>
+</html>

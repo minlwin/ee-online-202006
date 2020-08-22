@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      >
+
+	<ui:composition template="/WEB-INF/layout.xhtml">
+	
+		<ui:define name="title">Add Product</ui:define>
+		
+		<ui:define name="content">
+			
+			<div class="row">
+				
+				<div class="col-lg-6 col-md-12">
+					<h:form styleClass="form">
+						
+						<h:inputHidden value="#{productEditBean.product.id}" />
+						
+						<div class="form-group">
+						
+							<label for="category">Category</label>
+							<h:selectOneMenu id="category" value="#{productEditBean.product.category}" styleClass="form-control" >
+								<f:selectItems value="#{categoryBean.list}" var="c" 
+									itemValue="#{c}" itemLabel="#{c.name}" ></f:selectItems>
+								<f:converter binding="#{categoryConverter}"></f:converter>
+							</h:selectOneMenu>
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Product Name</label>
+							<h:inputText p:placeholder="Enter Product Name" styleClass="form-control" value="#{productEditBean.product.name}" />
+						</div>
+						
+						<div class="form-group">
+							<label for="price">Price</label>
+							<h:inputText value="#{productEditBean.product.price}" styleClass="form-control"
+								p:placeholder="Enter Price" p:type="number" />
+						</div>
+						
+						<h:commandButton action="#{productEditBean.save()}" value="Save" styleClass="btn btn-outline-info" />
+					
+					</h:form>		
+				</div>
+			
+			</div>
+		
+		</ui:define>
+	</ui:composition>
+</html>
