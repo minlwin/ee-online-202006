@@ -18,19 +18,25 @@
 
 				<div class="card-body">
 					
-					<h:form styleClass="form-inline">
-						
+					<h:form id="editForm" styleClass="form-inline">
+								
 						<h:inputHidden value="#{categoryEditBean.category.id}" />
 						
 						<div class="form-group mr-2">
 							
 							<label class="mr-2" for="name">Name</label>
-							<h:inputText p:placeholder="Enter Category Name" styleClass="form-control" value="#{categoryEditBean.category.name}"  />
+							<h:inputText id="name" p:placeholder="Enter Category Name" styleClass="form-control" 
+								value="#{categoryEditBean.category.name}"
+								required="true" requiredMessage="Please enter Category Name." />
 							
 						</div>
 						
 						<h:commandButton action="#{categoryEditBean.save()}" value="Save" styleClass="btn btn-outline-info" />
-					
+						
+						<div class="form-group ml-2">
+							<h:message for="name" />
+						</div>
+				
 					</h:form>
 				
 				</div>

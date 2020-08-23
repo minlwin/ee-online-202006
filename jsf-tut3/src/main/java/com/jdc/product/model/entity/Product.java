@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Product implements Serializable{
@@ -16,9 +18,12 @@ public class Product implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@NotEmpty(message = "Please enter Product Name")
 	private String name;
 	@ManyToOne
 	private Category category;
+	@Min(value = 50, message = "Please enter atleast 50 for price.")
 	private int price;
 
 	public int getId() {

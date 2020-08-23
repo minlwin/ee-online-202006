@@ -26,6 +26,8 @@ public class ProductBean {
 	@PostConstruct
 	private void init() {
 		list = new ArrayList<>();
+		
+		search();
 	}
 	
 	public void search() {
