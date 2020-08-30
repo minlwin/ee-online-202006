@@ -13,7 +13,7 @@
 	<h1>Form Demo</h1>
 	
 	<h:form>
-		
+		<f:phaseListener binding="#{lifecyclePhaseListener}"></f:phaseListener>
 		<h:outputLabel value="Message" style="margin-right: 4px" />
 		
 		<h:inputText value="#{formBean.message}" 
