@@ -20,6 +20,9 @@ public class ValidationBean {
 	private String phone;
 	
 	public void check() {
+		
+		// Cross Fields Validation in Action Listener
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		// prices
