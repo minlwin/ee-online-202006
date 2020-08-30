@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>Output</title>
+</h:head>
+<body>
+
+	<h1>Output</h1>
+
+	<h:panelGrid columns="2">
+
+		<span>Price From</span>
+		<h:outputText value="#{validationBean.priceFrom}" />
+
+		<span>Price To</span>
+		<h:outputText value="#{validationBean.priceTo}" />
+
+		<span>Date From</span>
+		<h:outputText value="#{validationBean.dateFrom}" />
+
+		<span>Date To</span>
+		<h:outputText value="#{validationBean.dateTo}" />
+
+		<span>Password</span>
+		<h:outputText value="#{validationBean.password}" />
+
+		<span>Phone</span>
+		<h:outputText value="#{validationBean.phone}" />
+
+		<span>Email</span>
+		<h:outputText value="#{validationBean.email}" />
+	</h:panelGrid>
+</body>
+</html>
