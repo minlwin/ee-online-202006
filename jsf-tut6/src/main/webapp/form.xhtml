@@ -13,12 +13,12 @@
 	<h1>Form Demo</h1>
 	
 	<h:form>
-		<f:phaseListener binding="#{lifecyclePhaseListener}"></f:phaseListener>
 		<h:outputLabel value="Message" style="margin-right: 4px" />
 		
 		<h:inputText value="#{formBean.message}" 
-			converter="myConverter" validator="myValidator"
-			style="margin-right: 4px" />
+			style="margin-right: 4px" >
+			<f:converter binding="#{myConverter}" />	
+		</h:inputText>
 		
 		<h:commandButton action="#{formBean.add()}" value="Add" />
 	</h:form>

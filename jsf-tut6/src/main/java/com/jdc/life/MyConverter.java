@@ -1,10 +1,14 @@
 package com.jdc.life;
 
+import javax.enterprise.context.Dependent;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Named;
 
+@Named
+@Dependent
 @FacesConverter("myConverter")
 public class MyConverter implements Converter<String>{
 

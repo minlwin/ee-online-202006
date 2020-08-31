@@ -24,10 +24,7 @@ public class LifecyclePhaseListener implements PhaseListener{
 	@Override
 	public void beforePhase(PhaseEvent event) {
 		FacesContext context = event.getFacesContext();
-		System.out.println(context.getExternalContext().getRequestServletPath());
-		
 		UIViewRoot root = context.getViewRoot();
-		System.out.println(root.getChildren());
 		System.out.println(String.format("Before %s -> View Count is %d", event.getPhaseId().getName(), root.getChildCount()));
 	}
 

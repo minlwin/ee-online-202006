@@ -1,6 +1,9 @@
 package com.jdc.life;
 
+import java.io.IOException;
+
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named
@@ -12,6 +15,18 @@ public class NavigationBean {
 	
 	public String send() {
 		return "navigate-to";
+	}
+	
+	public String redirect() {
+		return "navigate-to?faces-redirect=true";
+	}
+	
+	public void redirectByExternalContext() {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("navigate-to.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getName() {

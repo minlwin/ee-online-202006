@@ -26,7 +26,11 @@
 			<h:inputText value="#{navigationBean.age}" p:type="number" />
 			
 			<span></span>
-			<h:commandButton action="#{navigationBean.send()}" value="Send" />
+			<h:panelGroup>
+				<h:commandButton action="#{navigationBean.send()}" value="Navigate" />
+				<h:commandButton action="#{navigationBean.redirect()}" value="Redirect" />
+				<h:commandButton action="#{navigationBean.redirectByExternalContext()}" value="Redirect by External Context" />
+			</h:panelGroup>
 		</h:panelGrid>
 	
 	</h:form>
