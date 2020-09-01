@@ -15,7 +15,15 @@
 	<h:form>
 		
 		<h:panelGrid columns="2">
+		
+			<h:outputText value="Big Integer" />
+			<h:inputText value="#{inputBeans.data}" converter="javax.faces.BigInteger" />
 			
+			<h:inputText value="#{inputBeans.data}" 
+				converterMessage="Please Check Your Input!" >
+				<f:converter converterId="javax.faces.BigInteger" />
+			</h:inputText>
+
 			<h:outputText value="Input Text" />
 			<h:inputText value="#{inputBeans.inputTextCategory}" >
 				<f:converter binding="#{categoryConverter}" />
@@ -37,6 +45,9 @@
 	<h3>Result</h3>
 	
 	<h:panelGrid columns="2">
+	
+		<h:outputLabel value="Big Integer" />
+		<h:outputText value="#{inputBeans.data}" />
 		
 		<h:outputLabel value="Input Text" />
 		<h:outputText value="#{inputBeans.inputTextCategory.name}" />

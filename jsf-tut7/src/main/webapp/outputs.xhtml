@@ -42,7 +42,7 @@
 	
 		<h:outputText value="Numbers" />
 		<h:outputText value="#{outputBeans.number}">
-			<f:convertNumber pattern="$ #,##0" />
+			<f:convertNumber type="currency" currencyCode="USD" />
 		</h:outputText>
 
 		<h:outputText value="Util Dates" />
@@ -58,6 +58,11 @@
 		<h:outputText value="Custom Object" />
 		<h:outputText value="#{outputBeans.user}" >
 			<f:converter binding="#{userConverter}"></f:converter>
+		</h:outputText>
+		
+		<h:outputText value="NRC" />
+		<h:outputText value="#{nrcNumberBean.nrc}" >
+			<f:converter binding="#{nrcNumberFormatter}" />
 		</h:outputText>
 
 	</h:panelGrid>
