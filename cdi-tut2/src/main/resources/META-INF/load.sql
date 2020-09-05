@@ -1,0 +1,14 @@
+insert into State (head, name) values ('Phyo Min Thein', 'Yangon Region');
+insert into State (head, name) values ('Dr Zaw Myint Maung', 'Mandalay Region');
+insert into State (head, name) values ('Aung Moe Nyo', 'Magway Region');
+insert into State (head, name) values ('Dr Myint Naing', 'Sagaing Region');
+insert into State (head, name) values ('Win Thein', 'Bago Region');
+insert into State (head, name) values ('Hla Moe Aung', 'Ayeyarwady Region');
+insert into State (head, name) values ('Myint Maung', 'Tanintharyi Region');
+insert into State (head, name) values ('Dr Khat Aung', 'Kachin State');
+insert into State (head, name) values ('Boss Ko (acting)', 'Kayah State');
+insert into State (head, name) values ('Nan Khin Htwe Myint', 'Kayin State');
+insert into State (head, name) values ('Salai Lian Luai', 'Chin State');
+insert into State (head, name) values ('Aye Zan, Dr.', 'Mon State');
+insert into State (head, name) values ('Nyi Pu', 'Rakhine State');
+insert into State (head, name) values ('Dr Linn Htut', 'Shan State');
