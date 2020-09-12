@@ -22,16 +22,16 @@
 	<!-- Navigation Bar -->
 	<div class="navbar navbar-dark navbar-expand bg-dark">
 		
-		<div class="container">
+		<div class="container-fluid">
 			
-			<h:link outcome="index" styleClass="navbar-brand">
+			<h:link outcome="/index" styleClass="navbar-brand">
 				<i class="fa fa-home"></i> Home
 			</h:link>
 			
 			<ul class="navbar-nav mr-auto">
 				
 				<li class="nav-item">
-					<h:link outcome="index" styleClass="nav-link">
+					<h:link outcome="/views/sales" styleClass="nav-link">
 						<i class="fa fa-list"></i> Sales
 					</h:link>
 				</li>
@@ -41,7 +41,7 @@
 			<ul class="navbar-nav">
 				<li class="nav-item">
 				
-					<h:link outcome="shopping-cart" styleClass="nav-link">
+					<h:link outcome="/views/shopping-cart" styleClass="nav-link">
 						<i class="fa fa-shopping-cart mr-2"></i> <h:outputText value="#{cartCount}" />
 					</h:link>
 				</li>
@@ -52,7 +52,7 @@
 	</div>
 	
 	
-	<div class="container mt-4">
+	<div class="container-fluid mt-4">
 		<div class="row">
 			
 			<div class="col-3">
@@ -61,7 +61,7 @@
 					<div class="list-group-item list-group-item-primary">Categories</div>
 					
 					<ui:repeat var="c" value="#{categories}">
-						<h:link outcome="index" value="#{c.name}" styleClass="list-group-item list-group-item-action">
+						<h:link outcome="/index" value="#{c.name}" styleClass="list-group-item list-group-item-action">
 							<f:param name="category" value="#{c.id}"></f:param>
 						</h:link>
 					</ui:repeat>

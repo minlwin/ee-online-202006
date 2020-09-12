@@ -5,6 +5,59 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-	<ui:composition template="">
+	<ui:composition template="/WEB-INF/template.xhtml">
+		
+		<ui:define name="content">
+			
+			<h3><i class="fa fa-user-o"></i> Customer Info</h3>
+			
+			<h:form styleClass="form">
+				
+				<div class="row">
+				
+					<div class="col-6">
+						
+						<div class="form-group">
+							<label>Name</label>
+							<h:inputText id="name" value="#{checkOutBean.sale.customer}" 
+								styleClass="form-control"
+								p:placeholder="Enter Customer Name" 
+								validatorMessage="Please Enter Customer Name.">
+								<f:validateRequired />	
+							</h:inputText>
+							<h:message for="name"/>
+						</div>
+					
+						<div class="form-group">
+							<label>Phone</label>
+							<h:inputText id="phone" value="#{checkOutBean.sale.phone}" 
+								styleClass="form-control"
+								p:placeholder="Enter Phone Number" required="true"
+								requiredMessage="Please enter Phone Number." />
+							<h:message for="phone"/>
+						</div>
+
+						<div class="form-group">
+							<label>Email</label>
+							<h:inputText id="email" value="#{checkOutBean.sale.email}" 
+								styleClass="form-control"
+								p:placeholder="Enter Email Address" required="true"
+								requiredMessage="Please enter Email Address." />
+							<h:message for="email"/>
+						</div>
+						
+						<div class="form-group">
+							<h:commandLink styleClass="btn btn-outline-danger" action="confirm">
+								<i class="fa fa-send"></i> Confirm
+ 							</h:commandLink>
+						
+						</div>
+
+					</div>
+				</div>
+			
+			</h:form>
+		</ui:define>
+	
 	</ui:composition>
 </html>

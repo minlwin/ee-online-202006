@@ -1,0 +1,56 @@
+<div xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<composite:interface>
+		<composite:attribute name="title" type="java.lang.String" required="true"></composite:attribute>
+		<composite:attribute name="orders" type="java.util.List" required="true"  />
+		<composite:attribute name="total" required="true"></composite:attribute>
+	</composite:interface>
+
+	<composite:implementation>
+		<h4><i class="fa fa-shopping-cart"></i> #{cc.attrs.title}</h4>	
+		
+		<h:dataTable columnClasses=",text-right,text-right,text-right" styleClass="table table-striped mt-4" 
+			value="#{cc.attrs.orders}" var="order">
+			
+			<h:column>
+				<f:facet name="header">Product</f:facet>
+				#{order.product.name}
+				
+				<f:facet name="footer">Total</f:facet>
+			</h:column>
+		
+			<h:column headerClass="text-right">
+				<f:facet name="header">Unit Price</f:facet>
+				<h:outputText value="#{order.product.price}" >
+					<f:convertNumber groupingUsed="true"/>
+				</h:outputText>
+			</h:column>
+
+			<h:column headerClass="text-right">
+				<f:facet name="header">Qty</f:facet>
+				#{order.quentity}
+				
+				
+			</h:column>
+
+			<h:column headerClass="text-right" footerClass="text-right">
+				<f:facet name="header">Total</f:facet>
+				<h:outputText value="#{order.product.price * order.quentity}" >
+					<f:convertNumber pattern="#,##0 MMK"/>
+				</h:outputText>
+				
+				<f:facet name="footer">
+				<h:outputText value="#{cc.attrs.total}" >
+					<f:convertNumber pattern="#,##0 MMK"/>
+				</h:outputText>
+				
+				</f:facet>
+			</h:column>
+		</h:dataTable>
+	</composite:implementation>
+
+</div>

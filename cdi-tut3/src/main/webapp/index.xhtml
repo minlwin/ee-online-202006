@@ -12,7 +12,7 @@
 			<h3>Select Products</h3>
 			
 			<h:form>
-				<h:dataTable styleClass="table" value="#{productBean.products}" var="p">
+				<h:dataTable columnClasses=",,,,text-right" styleClass="table" value="#{productBean.products}" var="p">
 					
 					<h:column>
 						<f:facet name="header">ID</f:facet>
@@ -34,7 +34,7 @@
 						#{p.brend}
 					</h:column>
 					
-					<h:column>
+					<h:column headerClass="text-right">
 						<f:facet name="header">Price</f:facet>
 						<h:outputText value="#{p.price}" >
 							<f:convertNumber pattern="#,##0 MMK"/>

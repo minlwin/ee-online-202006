@@ -39,12 +39,13 @@ public class CheckOutBean implements Serializable{
 	
 	public String checkOut() {
 		
-		service.checkOut(sale, cart.getCart());
+		service.checkOut(sale, cart.getOrders());
+		cart.clear();
 		
 		if(!conversation.isTransient()) {
 			conversation.end();
 		}
-		return "views/sales?faces-redirect=true";
+		return "/views/sales?faces-redirect=true";
 	}
 
 	public Sales getSale() {

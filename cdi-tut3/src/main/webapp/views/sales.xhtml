@@ -5,6 +5,70 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-	<ui:composition template="">
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="content">
+		
+			<h3>Sale History</h3>
+			
+			<h:dataTable columnClasses=",,,,,text-right,text-right" value="#{salesHistoryBean.list}" var="s"
+				styleClass="table table-striped">
+				
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					#{s.id}
+					
+					<f:facet name="footer">Total</f:facet>
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">Sale Time</f:facet>
+					<h:link outcome="/views/sales-details" >
+						<f:param name="id" value="#{s.id}" />
+						<h:outputText value="#{s.saleTime}" >
+							<f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm" />
+						</h:outputText>
+					</h:link>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Customer</f:facet>
+					#{s.customer}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Phone</f:facet>
+					#{s.phone}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{s.email}
+				</h:column>
+				
+				<h:column headerClass="text-right" footerClass="text-right">
+					<f:facet name="header">Quentity</f:facet>
+					#{s.quentity}
+					
+					<f:facet name="footer">
+						#{salesHistoryBean.quentity}
+					</f:facet>
+				</h:column>
+				
+				<h:column headerClass="text-right" footerClass="text-right" >
+					<f:facet name="header">Total</f:facet>
+					<h:outputText value="#{s.total}" >
+						<f:convertNumber pattern="#,##0 MMK"/>
+					</h:outputText>
+					<f:facet name="footer">
+					<h:outputText value="#{salesHistoryBean.total}" >
+						<f:convertNumber pattern="#,##0 MMK"/>
+					</h:outputText>
+					</f:facet>
+				</h:column>
+			</h:dataTable>
+		
+		</ui:define>
+	
 	</ui:composition>
 </html>

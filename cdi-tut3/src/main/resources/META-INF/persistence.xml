@@ -3,7 +3,7 @@
 	<persistence-unit name="cdi-tut3">
 		<jta-data-source>java:app/SalesDB</jta-data-source>
 		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.schema-generation.database.action" value="none"/>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="javax.persistence.sql-load-script-source" value="/META-INF/load.sql"/>

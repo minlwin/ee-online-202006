@@ -2,16 +2,21 @@ package com.jdc.sale.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@NamedQuery(name = "Sales.getAll", query = "select s from Sales s")
 public class Sales implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -27,9 +32,20 @@ public class Sales implements Serializable{
 	private String email;
 	private LocalDateTime saleTime;
 	
+	@OneToMany(mappedBy = "sales", fetch = FetchType.EAGER)
+	private List<SalesDetails> orders;
+	
 	@PrePersist
 	private void prePersist() {
 		saleTime = LocalDateTime.now();
+	}
+	
+	public int getTotal() {
+		return orders.stream().mapToInt(od -> od.getProduct().getPrice() * od.getQuentity()).sum();
+	}
+	
+	public int getQuentity() {
+		return orders.stream().mapToInt(od -> od.getQuentity()).sum();
 	}
 
 	public int getId() {
@@ -72,4 +88,13 @@ public class Sales implements Serializable{
 		this.saleTime = saleTime;
 	}
 
+	public List<SalesDetails> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<SalesDetails> orders) {
+		this.orders = orders;
+	}
+
+	
 }
