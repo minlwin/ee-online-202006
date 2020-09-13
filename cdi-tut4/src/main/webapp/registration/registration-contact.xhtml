@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Contacts</ui:define>
+		
+		<ui:define name="content">
+			
+			<h:form>
+			
+				<div class="form-group">
+					<label>Phone</label>
+					<h:inputText value="#{registrationBean.customer.phone}" styleClass="form-control" />
+				</div>
+			
+				<div class="form-group">
+					<label>Email</label>
+					<h:inputText value="#{registrationBean.customer.email}" styleClass="form-control" />
+				</div>
+
+				<div class="form-group">
+					<label>Address</label>
+					<h:inputTextarea value="#{registrationBean.customer.address}" styleClass="form-control" />
+				</div>
+				<h:commandButton styleClass="btn btn-primary" action="registration" value="Back" />
+				<h:commandButton styleClass="btn btn-info float-right" action="registration-confirm" value="Next" />
+			</h:form>
+		
+		</ui:define>
+		
+	</ui:composition>
+</html>

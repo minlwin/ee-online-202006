@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Person Information</ui:define>
+		
+		<ui:define name="content">
+			
+			<h:form styleClass="form">
+			
+				<div class="row">
+				
+					<div class="col">
+						<div class="form-group">
+							<label>Name</label>
+							<h:inputText styleClass="form-control" value="#{registrationBean.customer.name}" />
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="form-group">
+							<label>Nick Name</label>
+							<h:inputText styleClass="form-control" value="#{registrationBean.customer.nickName}" />
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="form-group">
+							<label>Date of Birth</label>
+							<h:inputText styleClass="form-control" p:type="date"
+								value="#{registrationBean.customer.dob}" >
+								<f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+							</h:inputText>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label>Greeting</label>
+					<h:inputTextarea styleClass="form-control" value="#{registrationBean.customer.greeting}"></h:inputTextarea>
+				</div>
+			
+				<h:commandButton action="/index" value="Home" styleClass="btn btn-primary"></h:commandButton>
+				<h:commandButton styleClass="btn btn-info float-right" action="registration-contact" value="Next" />
+			</h:form>
+		
+		</ui:define>
+	</ui:composition>
+</html>
