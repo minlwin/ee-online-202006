@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>Alternative Demo</title>
+</h:head> 
+<body> 
+
+	<h1>Alternative</h1>
+
+	
+	<h:form>
+		<label>Search Name</label>
+		
+		<h:inputText value="#{customerBean.name}" />
+		
+		<h:commandButton action="#{customerBean.search()}" value="Search" />
+		
+		<h:button outcome="/edit" value="Add Customer"></h:button>
+	</h:form>
+	
+	<h:dataTable value="#{customerBean.list}" var="c">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			#{c.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{c.name}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Phone</f:facet>
+			#{c.phone}
+		</h:column>
+	</h:dataTable>
+</body> 
+</html>
