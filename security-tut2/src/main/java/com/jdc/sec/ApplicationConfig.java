@@ -3,7 +3,6 @@ package com.jdc.sec;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.sql.DataSourceDefinition;
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.annotation.FacesConfig;
 import javax.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
@@ -19,14 +18,11 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 		callerQuery = "select password from account where login_id = ?",
 		groupsQuery = "select role from account where login_id = ?"
 )
-@FormAuthenticationMechanismDefinition(
-		loginToContinue = @LoginToContinue(
-				loginPage = "/login.xhtml",
-				errorPage = "/login-error.xhtml"
-		)
-)
 @DeclareRoles({"Admin", "Member"})
-@FacesConfig
+@FormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(
+		loginPage = "/login.xhtml",
+		errorPage = "/login-error.xhtml"
+))
 @ApplicationScoped
 public class ApplicationConfig {
 }

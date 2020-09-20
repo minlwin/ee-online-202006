@@ -12,10 +12,59 @@
 
 	<h1>Admin Home</h1>
 	
-	
-	
 	<h:form>
 		<h:commandButton action="#{logoutBean.logout()}" value="Logout" />
 	</h:form>
+	
+	<hr />
+	
+	<h3>User Management</h3>
+	
+	<h:form>
+		<h:messages showDetail="true" showSummary="false"/>
+		
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{userManagement.user.name}" />
+		
+			<h:outputLabel value="Role" />
+			<h:selectOneMenu value="#{userManagement.user.role}">
+				<f:selectItem itemValue="Member"/>
+				<f:selectItem itemValue="Admin"/>
+			</h:selectOneMenu>
+
+			<h:outputLabel value="Login Id" />
+			<h:inputText value="#{userManagement.user.loginId}" />
+
+			<h:outputLabel value="Password" />
+			<h:inputSecret value="#{userManagement.user.password}" />
+			
+			<span></span>
+			<h:commandButton action="#{userManagement.create()}" value="Create User" />
+
+		</h:panelGrid>
+	
+	</h:form>
+	
+	<h:dataTable value="#{userManagement.list}" var="u">
+	
+		<h:column>
+			<f:facet name="header">Role</f:facet>
+			#{u.role}
+		</h:column>
+	
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{u.name}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Login Id</f:facet>
+			#{u.loginId}
+		</h:column>
+	</h:dataTable>
+	
+	
 </body> 
 </html>

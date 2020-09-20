@@ -9,9 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "account")
+@NamedQuery(name = "User.findAllWithoutMe", query = "select u from User u where u.loginId <> :loginId")
 @NamedQuery(name = "User.count", query = "select count(u) from User u")
 public class User implements Serializable {
 
@@ -19,8 +21,11 @@ public class User implements Serializable {
 	
 	@Id
 	@Column(name = "login_id")
+	@NotEmpty(message = "Please enter login Id.")
 	private String loginId;
+	@NotEmpty(message = "Please enter Member name.")
 	private String name;
+	@NotEmpty(message = "Please enter Password.")
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;

@@ -12,12 +12,13 @@
 		<display-name>FacesServlet</display-name>
 		<servlet-name>FacesServlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FacesServlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-
+	
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Admins</web-resource-name>

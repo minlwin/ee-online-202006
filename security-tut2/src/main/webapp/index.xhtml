@@ -21,5 +21,30 @@
 		</li>
 	</ul>
 
+
+	<hr />
+	
+	<h3>Sign Up</h3>
+	
+	<h:form>
+		<h:messages showDetail="true" showSummary="false"/>
+		
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{signUpBean.member.name}" id="name" />
+			
+			<h:outputLabel value="Login Id" />
+			<h:inputText value="#{signUpBean.member.loginId}" id="loginId" />
+			
+			<h:outputLabel value="Password" />
+			<h:inputSecret value="#{signUpBean.member.password}" id="password" />
+			
+			<span></span>
+			<h:commandButton action="#{signUpBean.signUp()}" value="Sign Up" />
+		
+		</h:panelGrid>
+	
+	</h:form>
 </body> 
 </html>
