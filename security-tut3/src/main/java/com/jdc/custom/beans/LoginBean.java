@@ -4,6 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.security.enterprise.AuthenticationStatus;
 import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
 import javax.security.enterprise.credential.Credential;
@@ -34,11 +35,15 @@ public class LoginBean {
 		HttpServletRequest request = (HttpServletRequest) context.getRequest();
 		HttpServletResponse response = (HttpServletResponse) context.getResponse();
 		
-		security.authenticate(
+		AuthenticationStatus status = security.authenticate(
 				request, response, 
 				AuthenticationParameters.withParams().credential(credential));
 		
-		return context.getRequestHeaderMap().get("referer") + "?faces-redirect=true";
+		if(status == AuthenticationStatus.SUCCESS) {
+			return context.getRequestHeaderMap().get("referer") + "?faces-redirect=true";
+		}
+		
+		return null;
 	}
 	
 	public String getLoginId() {
