@@ -15,17 +15,16 @@ import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 		password = "sa",
 		className = "org.hsqldb.jdbc.JDBCPool"
 )
-@FacesConfig(version = Version.JSF_2_3)
 @DeclareRoles({
 	"Admin", "Owner", "Customer"
 })
 
 @CustomFormAuthenticationMechanismDefinition(
 		loginToContinue = @LoginToContinue(
-				loginPage = "/index.xhtml",
-				errorPage = "/index.xhtml"
+				loginPage = "/index.xhtml"
 		)
 )
+@FacesConfig(version = Version.JSF_2_3)
 @ApplicationScoped
 public class AppConfig {
 

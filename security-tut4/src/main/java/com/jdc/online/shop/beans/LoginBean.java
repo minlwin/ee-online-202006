@@ -1,7 +1,9 @@
 package com.jdc.online.shop.beans;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.AuthenticationStatus;
@@ -30,15 +32,22 @@ public class LoginBean {
 
 	public String login() {
 		
-		HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
-		HttpServletResponse response = (HttpServletResponse) externalContext.getResponse();
-		UsernamePasswordCredential credential = new UsernamePasswordCredential(email, password);
 		
-		AuthenticationStatus status = security.authenticate(request, response, 
-				AuthenticationParameters.withParams().credential(credential));
-	
-		if(status == AuthenticationStatus.SUCCESS) {
-			return "/admin/home";
+		try {
+			HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+			HttpServletResponse response = (HttpServletResponse) externalContext.getResponse();
+			UsernamePasswordCredential credential = new UsernamePasswordCredential(email, password);
+			
+			AuthenticationStatus status = security.authenticate(request, response, 
+					AuthenticationParameters.withParams().credential(credential));
+			
+			if(status == AuthenticationStatus.SUCCESS) {
+				return "/admin/home";
+			}
+			
+			
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
 		}
 		
 		return null;
