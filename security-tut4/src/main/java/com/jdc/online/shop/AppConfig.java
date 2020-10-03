@@ -10,10 +10,10 @@ import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 
 @DataSourceDefinition(
 		name = "java:app/ShopDB",
-		url = "jdbc:hsqldb:meme:ShopDB",
-		user = "sa",
-		password = "sa",
-		className = "org.hsqldb.jdbc.JDBCPool"
+		url = "jdbc:postgresql://localhost:5432/shops",
+		user = "shops",
+		password = "shops",
+		className = "org.postgresql.ds.PGSimpleDataSource"
 )
 @DeclareRoles({
 	"Admin", "Owner", "Customer"
