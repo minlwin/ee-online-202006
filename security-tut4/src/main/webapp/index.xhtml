@@ -12,12 +12,61 @@
 		
 		<ui:define name="content">
 			<!-- Cover Image -->
+			<div class="mt-4">
+				
+				<div id="coverImages" class="carousel slide" data-ride="carousel">
+					
+					<div class="carousel-inner">
+						
+						<div class="carousel-item active">
+							<h:graphicImage library="images" styleClass="d-block w-100" name="cover1.jpg" />
+							<div class="carousel-caption d-none d-md-block">
+								<h3>Slide 1</h3>
+							</div>
+						</div>
+					
+						<div class="carousel-item">
+							<h:graphicImage library="images" styleClass="d-block w-100" name="cover2.jpg" />
+							<div class="carousel-caption d-none d-md-block">
+								<h3>Slide 1</h3>
+							</div>
+						</div>
+
+						<div class="carousel-item">
+							<h:graphicImage library="images" styleClass="d-block w-100" name="cover3.jpg" />
+							<div class="carousel-caption d-none d-md-block">
+								<h3>Slide 1</h3>
+							</div>
+						</div>
+					</div>
+					
+					<a class="carousel-control-prev" href="#coverImages" role="button" data-slide="prev" >
+						<span class="carousel-control-prev-icon"></span>
+					</a>
+					<a class="carousel-control-next" href="#coverImages" role="button" data-slide="next" >
+						<span class="carousel-control-next-icon"></span>
+					</a>
+					
+					<ol class="carousel-indicators">
+						<li data-target="#coverImages" data-slide-to="0" class="active"></li>
+						<li data-target="#coverImages" data-slide-to="1" ></li>
+						<li data-target="#coverImages" data-slide-to="2" ></li>
+					</ol>
+				</div>
+
+			</div>
 			
 			<!-- Search Bar -->
 			
 			<!-- Categories -->
 			
 			<!-- Top Products -->
+			
+			<script>
+				$(() => {
+					$('.carousel').carousel();
+				})
+			</script>
 		</ui:define>
 	
 	</ui:composition>

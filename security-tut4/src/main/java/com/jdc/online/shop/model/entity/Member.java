@@ -26,6 +26,7 @@ public class Member implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotEmpty(message = "Please enter email.")
 	@Email(message = "Please enter valid email.")
 	@Column(nullable = false, unique = true)
 	private String email;

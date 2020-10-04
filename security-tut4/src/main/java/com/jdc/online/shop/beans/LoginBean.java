@@ -42,7 +42,7 @@ public class LoginBean {
 					AuthenticationParameters.withParams().credential(credential));
 			
 			if(status == AuthenticationStatus.SUCCESS) {
-				return "/admin/home";
+				return "/index";
 			}
 			
 			

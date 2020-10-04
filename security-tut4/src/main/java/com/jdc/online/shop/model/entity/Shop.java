@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
-
-import static javax.persistence.CascadeType.PERSIST;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Shop implements Serializable {
@@ -20,10 +19,12 @@ public class Shop implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToOne(optional = false, cascade = PERSIST)
+	@OneToOne(optional = false)
 	private Member owner;
 
+	@NotEmpty(message = "Please enter shop name.")
 	private String name;
+	@NotEmpty(message = "Please enter shop type.")
 	private String type;
 	private LocalDateTime createDate;
 	private boolean published;

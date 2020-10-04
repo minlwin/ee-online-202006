@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		
+		<ui:define name="title">Create Shop</ui:define>
+		
+		<ui:define name="content">
+			
+			<h3 class="mt-4">Create Shop</h3>
+			<!-- Image -->
+			
+			<div class="row">
+			
+				<div class="col-4">
+					
+					<div class="p-4">
+						<h:graphicImage library="images" name="shop.png" styleClass="w-100" />
+					</div>
+				
+				</div>
+				
+				<div class="col-8">
+				
+					<h:form styleClass="form">
+						
+						<!-- Shop Information -->
+						<div class="form-group">
+							<label>Shop Name</label>
+							<h:inputText styleClass="form-control" value="#{shopEditBean.shop.name}" p:placeholder="Enter Shop Name" />
+						</div>
+					
+						<div class="form-group">
+							<label>Shop Type</label>
+							<h:inputText styleClass="form-control" value="#{shopEditBean.shop.type}" p:placeholder="Enter Shop Type" />
+						</div>
+
+						<!-- Owner Information -->
+						<div class="form-group">
+							<label>Owner Name</label>
+							<h:inputText styleClass="form-control" value="#{shopEditBean.shop.owner.name}" p:placeholder="Enter Owner Name" />
+						</div>
+
+						<div class="form-group">
+							<label>Email (Login ID)</label>
+							<h:inputText styleClass="form-control" value="#{shopEditBean.shop.owner.email}" p:placeholder="Enter Email Address" />
+						</div>
+
+						<div class="form-group">
+							<label>Password</label>
+							<h:inputSecret styleClass="form-control" value="#{shopEditBean.shop.owner.password}" p:placeholder="Enter Password" />
+						</div>
+
+						<div class="form-group">
+						
+							<h:commandLink action="#{shopEditBean.create()}" styleClass="btn btn-outline-primary" >
+								<i class="fa fa-plus"></i> Create Shop
+							</h:commandLink>
+						</div>
+					</h:form>
+				</div>
+			</div>
+						
+			
+			
+
+		</ui:define>
+	
+	</ui:composition>
+</html>
