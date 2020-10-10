@@ -25,6 +25,17 @@ public class LoginUserHolder implements Serializable{
 				loginUser.getRole().name().toLowerCase()) : "/index";
 	}
 	
+	@Named
+	@Produces
+	public String getLoginRole() {
+		
+		if(null != loginUser) {
+			return loginUser.getRole().name();
+		}
+		
+		return null;
+	}
+	
 	public Member getLoginUser() {
 		return loginUser;
 	}

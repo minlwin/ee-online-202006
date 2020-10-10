@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@NamedQuery(name = "Shop.findByOwner", 
+	query = "select s from Shop s where s.owner.email = :loginId")
 public class Shop implements Serializable {
 
 	private static final long serialVersionUID = 1L;

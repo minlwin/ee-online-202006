@@ -3,7 +3,6 @@
 	<persistence-unit name="security-tut4">
 		<jta-data-source>java:app/ShopDB</jta-data-source>
 		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 		</properties>

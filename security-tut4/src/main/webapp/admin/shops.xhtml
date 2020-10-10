@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		
+		<ui:define name="title">Shop Admin</ui:define>
+		
+		<ui:define name="content">
+		
+			<!-- Search Box -->
+			<div class="card mt-3">
+				
+				<div class="card-body">
+					
+					<h4 class="card-title">Shop Management</h4>
+				
+					<h:form styleClass="form-inline">
+						
+						<!-- Shop Name -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-shopping-bag"></i>
+								</div>
+							</div>
+							<h:inputText value="#{shopAdmin.shopName}" p:placeholder="Shop Name" styleClass="form-control" />
+						</div>
+						
+						<!-- Owner -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-user"></i>
+								</div>
+							</div>
+							<h:inputText value="#{shopAdmin.owner}" p:placeholder="Owner" styleClass="form-control" />
+						</div>
+						
+						<!-- Keywords -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-tag"></i>
+								</div>
+							</div>
+							<h:inputText value="#{shopAdmin.keywords}" p:placeholder="Shop Type" styleClass="form-control" />
+						</div>
+						
+						<!-- Search -->
+						<h:commandLink action="#{shopAdmin.search()}" styleClass="btn btn-outline-primary" >
+							<i class="fa fa-search"></i> Search
+						</h:commandLink>
+					
+					</h:form>
+					
+				</div>
+
+			</div>
+			
+			<!-- Shop List -->
+			<h:dataTable styleClass="table table-stripe table-hover mt-3" rendered="#{not empty shopAdmin.shops}" value="#{shopAdmin.shops}" var="s">
+			
+				<!-- Shop Name -->
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{s.name}
+				</h:column>
+				
+				<!-- Type -->
+				<h:column>
+					<f:facet name="header">Type</f:facet>
+					#{s.type}
+				</h:column>
+				
+				<!-- Create Date -->
+				<h:column>
+					<f:facet name="header">Create At</f:facet>
+					<h:outputText value="#{s.createDate}" >
+						<f:convertDateTime type="localDateTime" pattern="yyyy/MM/dd HH:mm"/>
+					</h:outputText>
+				</h:column>
+				
+				<!-- Owner -->
+				<h:column>
+					<f:facet name="header">Owner</f:facet>
+					#{s.owner.name}
+				</h:column>
+				
+				<!-- Email -->
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{s.owner.email}
+				</h:column>
+				
+				<!-- Status -->
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					<i class="fa #{s.published ? 'fa-check' : 'fa-close'}"></i>
+				</h:column>
+			
+			</h:dataTable>
+			
+
+		</ui:define>
+	
+	</ui:composition>
+</html>

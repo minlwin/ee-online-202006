@@ -25,14 +25,51 @@
 				<i class="fa fa-home"></i> Shop
 			</h:link>
 
-			<ul class="navbar-nav mr-auto">
+			<!-- Public Menu -->
+			<ul class="navbar-nav mr-auto #{empty loginUser ? '' : 'd-none'}">
 				<li class="nav-item">
 					<h:link outcome="/public/create-shop" rendered="#{empty loginUser}" styleClass="nav-link">
 						<i class="fa fa-plus"></i> Create Shop
 					</h:link>
 				</li>
 			</ul>
+			
+			<!-- Admin Menu -->
+			<ul class="navbar-nav mr-auto #{loginRole eq 'Admin' ? '' : 'd-none'}">
+				<li class="nav-item">
+					<h:link outcome="/admin/shops" rendered="#{loginRole eq 'Admin'}" styleClass="nav-link">
+						Shop Management
+					</h:link>
+				</li>
+				<li class="nav-item">
+					<h:link outcome="/admin/users" rendered="#{loginRole eq 'Admin'}" styleClass="nav-link">
+						User Management
+					</h:link>
+				</li>
+			</ul>
+			
+			
+			<!-- Shop Owner Menu -->
+			<ul class="navbar-nav mr-auto #{loginRole eq 'Owner' ? '' : 'd-none'}">
+				<li class="nav-item">
+					<h:link outcome="/owner/my-shop" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
+						<i class="fa fa-shopping-bag"></i> My Shop
+					</h:link>
+				</li>
+				<li class="nav-item">
+					<h:link outcome="/owner/my-orders" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
+						<i class="fa fa-send"></i> Orders
+					</h:link>
+				</li>
+				<li class="nav-item">
+					<h:link outcome="/owner/my-messages" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
+						<i class="fa fa-comment"></i> Messages
+					</h:link>
+				</li>
+			</ul>
+			
 
+			<!-- User Menu -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
 					<h:link outcome="#{loginUserHome}" styleClass="nav-link" rendered="#{not empty loginUser}"  >
