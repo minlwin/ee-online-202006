@@ -11,7 +11,84 @@
 		<ui:define name="title">User Admin</ui:define>
 		
 		<ui:define name="content">
-	
+			
+			<!-- Search Form -->
+			<div class="card mt-3">
+				
+				<div class="card-body">
+				
+					<h4 class="card-title">User Management</h4>
+					
+					<h:form styleClass="form-inline">
+						<!-- User Role -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-eye-slash"></i>
+								</div>
+							</div>
+							<h:selectOneMenu value="#{userAdmin.role}" styleClass="form-control">
+								<f:selectItem itemValue="" itemLabel="All Role"/>
+								<f:selectItem itemValue="Owner" itemLabel="Owner"/>
+								<f:selectItem itemValue="Customer" itemLabel="Customer"/>
+								<f:selectItem itemValue="Admin" itemLabel="Admin"/>
+							</h:selectOneMenu>
+						</div>
+
+						<!-- User Name -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-user"></i>
+								</div>
+							</div>
+							<h:inputText value="#{userAdmin.name}" p:placeholder="User Name" styleClass="form-control" />
+						</div>
+						
+						<!-- Email -->
+						<div class="input-group mr-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-envelope-o"></i>
+								</div>
+							</div>
+							<h:inputText value="#{userAdmin.email}" p:placeholder="Email" styleClass="form-control" />
+						</div>
+
+						<!-- Search -->
+						<h:commandLink action="#{userAdmin.search()}" styleClass="btn btn-outline-primary" >
+							<i class="fa fa-search"></i> Search
+						</h:commandLink>
+
+					</h:form>
+				</div>
+			</div>
+			
+			<!-- Result Data -->
+			<h:dataTable rendered="#{not empty userAdmin.users}" value="#{userAdmin.users}" var="u" styleClass="table table-striped table-hover mt-3">
+				
+				<h:column>
+					<f:facet name="header">Role</f:facet>
+					#{u.role}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{u.name}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{u.email}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					<i class="fa #{u.deleted ? 'fa-close' : 'fa-check'}"></i>
+				</h:column>
+
+			</h:dataTable>
+			
 		</ui:define>
 	
 	</ui:composition>

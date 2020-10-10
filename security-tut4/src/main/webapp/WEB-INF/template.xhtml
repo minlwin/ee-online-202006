@@ -38,12 +38,12 @@
 			<ul class="navbar-nav mr-auto #{loginRole eq 'Admin' ? '' : 'd-none'}">
 				<li class="nav-item">
 					<h:link outcome="/admin/shops" rendered="#{loginRole eq 'Admin'}" styleClass="nav-link">
-						Shop Management
+						<i class="fa fa-shopping-bag"></i> Shop Management
 					</h:link>
 				</li>
 				<li class="nav-item">
 					<h:link outcome="/admin/users" rendered="#{loginRole eq 'Admin'}" styleClass="nav-link">
-						User Management
+						<i class="fa fa-users"></i> User Management
 					</h:link>
 				</li>
 			</ul>

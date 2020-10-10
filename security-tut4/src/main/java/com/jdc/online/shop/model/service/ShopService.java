@@ -24,6 +24,11 @@ public class ShopService {
 	@Inject
 	private MemberService members;
 	
+	/**
+	 * Create Shop by Owner at first time
+	 * 
+	 * @param shop
+	 */
 	public void create(Shop shop) {
 		
 		// create owner
@@ -37,6 +42,14 @@ public class ShopService {
 		
 	}
 
+	/**
+	 * Search Shop by Admin
+	 * 
+	 * @param shopName
+	 * @param owner
+	 * @param keywords
+	 * @return
+	 */
 	public List<Shop> search(String shopName, String owner, String keywords) {
 		
 		StringBuffer sb = new StringBuffer("select s from Shop s where 1 = 1");
@@ -65,6 +78,12 @@ public class ShopService {
 		return query.getResultList();
 	}
 
+	/**
+	 * Fine One Shop by their Owner
+	 * 
+	 * @param owner
+	 * @return
+	 */
 	public Shop findByOnwer(Member owner) {
 		TypedQuery<Shop> query = em.createNamedQuery("Shop.findByOwner", Shop.class);
 		query.setParameter("loginId", owner.getEmail());
