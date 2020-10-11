@@ -3,7 +3,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:owner="http://java.sun.com/jsf/composite/owner-components"
+      >
 
 	<ui:composition template="/WEB-INF/template.xhtml">
 	
@@ -11,6 +13,8 @@
 		<ui:define name="title">Admin</ui:define>
 		
 		<ui:define name="content">
+		
+			<owner:cover menu="add-prod"></owner:cover>
 
 		</ui:define>
 	

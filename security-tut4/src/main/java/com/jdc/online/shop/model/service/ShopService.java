@@ -89,4 +89,8 @@ public class ShopService {
 		query.setParameter("loginId", owner.getEmail());
 		return query.getSingleResult();
 	}
+
+	public Shop save(Shop shop) {
+		return em.merge(shop);
+	}
 }

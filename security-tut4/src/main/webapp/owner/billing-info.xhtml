@@ -3,26 +3,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:owner="http://java.sun.com/jsf/composite/owner-components"
+      >
 
 	<ui:composition template="/WEB-INF/template.xhtml">
 	
 		
-		<ui:define name="title">
-			<h:outputText value="#{ownerShopBean.shop.name}" />
-		</ui:define>
+		<ui:define name="title">Admin</ui:define>
 		
 		<ui:define name="content">
-		
-			<!-- Cover Image -->
-			<h:graphicImage library="images" name="cover1.jpg" styleClass="my-shop-cover" />
-			
-			<!-- Header -->
-			
-			<!-- Menus -->
-			
-			<!-- Tab Body -->
-
+			<owner:cover menu="billing"></owner:cover>
 		</ui:define>
 	
 	</ui:composition>

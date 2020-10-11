@@ -48,26 +48,7 @@
 				</li>
 			</ul>
 			
-			
-			<!-- Shop Owner Menu -->
-			<ul class="navbar-nav mr-auto #{loginRole eq 'Owner' ? '' : 'd-none'}">
-				<li class="nav-item">
-					<h:link outcome="/owner/my-shop" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
-						<i class="fa fa-shopping-bag"></i> My Shop
-					</h:link>
-				</li>
-				<li class="nav-item">
-					<h:link outcome="/owner/my-orders" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
-						<i class="fa fa-send"></i> Orders
-					</h:link>
-				</li>
-				<li class="nav-item">
-					<h:link outcome="/owner/my-messages" rendered="#{loginRole eq 'Owner'}" styleClass="nav-link">
-						<i class="fa fa-comment"></i> Messages
-					</h:link>
-				</li>
-			</ul>
-			
+						
 
 			<!-- User Menu -->
 			<ul class="navbar-nav">

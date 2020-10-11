@@ -8,3 +8,61 @@
 	object-fit: none;
 	object-position: center;
 }
+
+.my-cover-container {
+	position: relative;
+}
+
+.my-cover-header {
+	position: absolute;
+	bottom: 16px;
+	left: 16px;
+}
+
+.my-cover-header .header {
+	color: white;	
+}
+
+.my-cover-header .sub-header {
+	color: white;
+}
+
+.my-cover-container .upload-photo {
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+	width: 35px;
+	height: 35px;
+	border-radius: 25px;
+	text-align: center;
+	background-color: white;
+}
+
+.my-cover-container .edit-shop {
+	position: absolute;
+	bottom: 16px;
+	right: 60px;
+	width: 35px;
+	height: 35px;
+	border-radius: 25px;
+	text-align: center;
+	background-color: white;
+}
+
+.my-cover-container .upload-photo i, 
+.my-cover-container .edit-shop i {
+	position: absolute;
+	top: 9px;
+	left: 9px;
+}
+
+.shopEditForm {
+	position: absolute;
+	width: 40%;
+	top: 15%;
+	left: 30%;
+}
+
+.shopEditForm label {
+	color: white;
+}
