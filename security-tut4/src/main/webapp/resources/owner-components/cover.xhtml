@@ -9,7 +9,7 @@
 
 	<div class="my-cover-container">
 		<!-- Cover Image -->
-		<h:graphicImage library="images" name="cover1.jpg" styleClass="my-shop-cover" />
+		<h:graphicImage id="coverImage" library="images" name="#{empty ownerShopBean.shop.coverImage ? 'cover1.jpg' : ownerShopBean.shop.coverImage}" styleClass="my-shop-cover" />
 		
 		<div class="my-cover-header">
 			<h3 class="header">
@@ -94,7 +94,12 @@
 	
 	</div>	
 	
-	<h:form styleClass="d-none">
+	<h:form enctype="multipart/form-data" styleClass="d-none">
+	
+		<h:inputFile styleClass="coverUpload" value="#{ownerShopBean.coverImage.inputFile}">
+			<f:ajax execute="@this" render="#{component.parent.parent.parent.clientId}:coverImage" listener="#{ownerShopBean.uploadCover()}"></f:ajax>
+		</h:inputFile>
+	
 		<h:commandButton styleClass="changeState" value="Switch State" >
 			<f:ajax execute="@this" render="#{component.parent.parent.parent.clientId}:shopStatus #{component.parent.parent.parent.clientId}:changeStateTrigger" listener="#{ownerShopBean.changeState()}"></f:ajax>
 		</h:commandButton>
@@ -116,8 +121,12 @@
 			})
 
 			$('#switchState').click(() => {
-				console.log('Click Change State')
 				$('.changeState').click()
+				return false
+			})
+
+			$('#editPhoto').click(() => {
+				$('.coverUpload').click()
 				return false
 			})
 		})

@@ -19,7 +19,7 @@ import javax.persistence.ElementCollection;
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -27,9 +27,8 @@ public class Product implements Serializable {
 	@ManyToOne(optional = false)
 	private Shop shop;
 	private boolean used;
-	private String coverPhoto;
 	private int price;
-	
+
 	@CollectionTable(name = "product_photo")
 	@ElementCollection
 	private List<String> photos;
@@ -38,7 +37,9 @@ public class Product implements Serializable {
 	@MapKeyColumn(name = "property")
 	@ElementCollection
 	private Map<String, String> properties;
-	
+
+	private boolean soldOut;
+
 	public Product() {
 		photos = new ArrayList<>();
 		properties = new HashMap<>();
@@ -76,14 +77,6 @@ public class Product implements Serializable {
 		this.used = used;
 	}
 
-	public String getCoverPhoto() {
-		return coverPhoto;
-	}
-
-	public void setCoverPhoto(String coverPhoto) {
-		this.coverPhoto = coverPhoto;
-	}
-
 	public int getPrice() {
 		return price;
 	}
@@ -106,6 +99,14 @@ public class Product implements Serializable {
 
 	public void setProperties(Map<String, String> properties) {
 		this.properties = properties;
+	}
+
+	public boolean isSoldOut() {
+		return soldOut;
+	}
+
+	public void setSoldOut(boolean soldOut) {
+		this.soldOut = soldOut;
 	}
 
 }

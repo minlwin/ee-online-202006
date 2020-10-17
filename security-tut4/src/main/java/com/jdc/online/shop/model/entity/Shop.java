@@ -32,10 +32,22 @@ public class Shop implements Serializable {
 	private LocalDateTime createDate;
 	private boolean published;
 	
+	private String coverImage;
+	
 	@PrePersist
 	public void prePersist() {
 		createDate = LocalDateTime.now();
 	}
+
+	public String getCoverImage() {
+		return coverImage;
+	}
+
+
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
+	}
+
 
 	public int getId() {
 		return id;
