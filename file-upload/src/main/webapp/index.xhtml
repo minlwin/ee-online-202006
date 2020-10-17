@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>File Upload</title>
+</h:head> 
+<body> 
+
+	<h1>File Upload Demo</h1>
+	
+	<h:messages id="messages" showDetail="false" showSummary="true"/>
+	
+	<h:form enctype="multipart/form-data">
+		
+		<h:inputFile value="#{uploadBean.file}">
+			<f:ajax execute="@this" render="result messages" listener="#{uploadBean.upload()}" />
+		</h:inputFile>
+		
+	</h:form>
+	
+	<h:dataTable id="result" value="#{uploadBean.list}" var="d">
+	
+		<h:column>
+			<f:facet name="id"></f:facet> 
+			#{d.id}
+		</h:column>
+		<h:column>
+			<f:facet name="name"></f:facet> 
+			#{d.name}
+		</h:column>
+
+	</h:dataTable>
+</body> 
+</html>
