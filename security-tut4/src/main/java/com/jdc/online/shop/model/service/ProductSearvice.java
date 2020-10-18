@@ -74,8 +74,9 @@ public class ProductSearvice {
 					Product product = new Product();
 					product.setShop(shop);
 					product.setName(array[0]);
-					product.setPrice(Integer.parseInt(array[2]));
-					product.setUsed(!"1".equals(array[1]));
+					product.setBrand(array[1]);
+					product.setUsed(!"1".equals(array[2]));
+					product.setPrice(Integer.parseInt(array[3]));
 					
 					em.persist(product);
 				}
@@ -83,6 +84,20 @@ public class ProductSearvice {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}		
+		}
+	}
+
+	public Product findById(int id) {
+		Product p = em.find(Product.class, id);
+		p.getProperties().forEach(a -> {});
+		return p;
+	}
+
+	public void save(Product product) {
+		if(product.getId() == 0) {
+			em.persist(product);
+		} else {
+			em.merge(product);
 		}
 	}
 }

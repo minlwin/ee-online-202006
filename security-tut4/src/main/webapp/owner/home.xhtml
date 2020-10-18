@@ -73,7 +73,9 @@
 							
 							<div class="card-footer">
 								<h:link value="Sold Out"/>
-								<h:link styleClass="float-right" value="Edit"/>
+								<h:link styleClass="float-right" outcome="/owner/edit-product" value="Edit">
+									<f:param name="id" value="#{p.id}"></f:param>
+								</h:link>
 							</div>
 						
 						</div>

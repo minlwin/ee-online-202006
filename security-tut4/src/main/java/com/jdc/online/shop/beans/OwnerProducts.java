@@ -42,6 +42,7 @@ public class OwnerProducts implements Serializable {
 	 */
 	public void upload() {
 		service.upload(ownerShop.getShop(), file);
+		search();
 	}
 	
 	/**

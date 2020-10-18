@@ -34,13 +34,18 @@ public class ImageUtils implements Serializable{
 		
 		if(null != inputFile) {
 			String fileName = inputFile.getSubmittedFileName();
-			String [] array = fileName.split("\\.");
-			
-			if(array.length > 1) {
-				return array[array.length - 1];
-			}
+			return getExtension(fileName);
 		}
 		
+		return null;
+	}
+	
+	public static String getExtension(String fileName) {
+		String [] array = fileName.split("\\.");
+		
+		if(array.length > 1) {
+			return array[array.length - 1];
+		}
 		return null;
 	}
 

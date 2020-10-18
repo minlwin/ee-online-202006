@@ -1,22 +1,156 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:owner="http://java.sun.com/jsf/composite/owner-components"
-      >
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:owner="http://java.sun.com/jsf/composite/owner-components">
 
-	<ui:composition template="/WEB-INF/template.xhtml">
-	
-		
-		<ui:define name="title">Admin</ui:define>
-		
-		<ui:define name="content">
-		
-			<owner:cover menu="add-prod"></owner:cover>
+<ui:composition template="/WEB-INF/template.xhtml">
 
-		</ui:define>
-	
-	</ui:composition>
+
+	<ui:define name="title">Admin</ui:define>
+
+	<ui:define name="content">
+
+		<owner:cover menu="add-prod"></owner:cover>
+
+		
+		<div class="row">
+			
+			<div class="col-4 pt-4">
+				<div class="card">
+					<h:graphicImage id="coverImage" library="images" name="#{productEdit.product.coverImage}" styleClass="card-img-top" />
+				</div>
+			</div>
+			
+			<div class="col-8">
+				
+				<!-- Title -->
+				<h3 class="mt-3">#{productEdit.product.id eq 0 ? 'Add' : 'Edit'} Product</h3>
+
+				<h:form>
+					
+					<div class="form-row">
+					
+						<div class="form-group col">
+							<label>Name</label>
+							<h:inputText value="#{productEdit.product.name}" styleClass="form-control" >
+								<f:ajax execute="@this"></f:ajax>
+							</h:inputText>
+						</div>
+
+						<div class="form-group col">
+							<label>Brand</label>
+							<h:inputText value="#{productEdit.product.brand}" styleClass="form-control" >
+								<f:ajax execute="@this"></f:ajax>
+							</h:inputText>
+						</div>
+
+					</div>
+				
+					<div class="form-row">
+					
+						<div class="form-group col">
+							<label>Condition</label>
+							<h:selectOneMenu value="#{productEdit.product.used}" styleClass="form-control">
+								<f:selectItem itemValue="false" itemLabel="Brand New"/>
+								<f:selectItem itemValue="true" itemLabel="Used"/>
+								<f:ajax execute="@this"></f:ajax>
+							</h:selectOneMenu>
+						</div>
+
+						<div class="form-group col">
+							<label>Price</label>
+							<h:inputText value="#{productEdit.product.price}" styleClass="form-control" >
+								<f:ajax execute="@this"></f:ajax>
+							</h:inputText>
+						</div>
+
+					</div>
+					
+					<ui:repeat var="p" varStatus="sts" value="#{productEdit.product.properties}">
+						<div class="form-row">
+							<div class="form-group col">
+								<label class="#{sts.index gt 0 ? 'd-none' : ''}">Property Name</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<h:commandLink styleClass="input-group-text" >
+											<i class="fa fa-remove"></i>
+											<f:ajax execute="@this" render="@form" listener="#{productEdit.removeProperty(sts.index)}" ></f:ajax>
+										</h:commandLink>
+									</div>
+									<h:inputText value="#{p.name}" styleClass="form-control" >
+										<f:ajax execute="@this"></f:ajax>
+									</h:inputText>
+								</div>
+							</div>
+							<div class="form-group col">
+								<label class="#{sts.index gt 0 ? 'd-none' : ''}">Property Value</label>
+								<h:inputText value="#{p.value}" styleClass="form-control" >
+									<f:ajax execute="@this"></f:ajax>
+								</h:inputText>
+							</div>
+						</div>
+					</ui:repeat>
+					
+					<h4>Photos</h4>
+					<div class="row">
+						
+						<ui:repeat var="p" varStatus="sts" value="#{productEdit.product.photos}">
+							
+							<div class="col-3 mb-3">
+								<h:commandLink>
+									<div class="card">
+										<h:graphicImage library="images" name="#{p}" styleClass="card-img-top" />
+									</div>
+									<f:ajax execute="@this" render="coverImage" listener="#{productEdit.selectPhoto(sts.index)}"></f:ajax>
+								</h:commandLink>
+							</div>
+						
+						</ui:repeat>
+						
+					</div>
+					
+					<div class="form-group">
+						<h:commandLink styleClass="btn btn-primary mr-2" >
+							<i class="fa fa-plus"></i> Add Property
+							<f:ajax execute="@this" render="@form" listener="#{productEdit.addProperty()}"></f:ajax>
+						</h:commandLink>
+						<a href="#" id="uploadPhotos" class="btn btn-secondary mr-3">
+							<i class="fa fa-camera"></i> Add Photos
+						</a>
+						<h:commandLink action="#{productEdit.save()}" styleClass="btn btn-danger">
+							<i class="fa fa-save"></i> Save Product
+						</h:commandLink>
+					</div>
+
+				</h:form>
+				
+				
+			
+			</div>
+		
+		</div>	
+		
+		
+		<h:form enctype="multipart/form-data" styleClass="d-none">
+			<h:inputFile styleClass="uploadPhotos" p:multiple="true" value="#{productEdit.photo}">
+				<f:ajax execute="@this" render="@all" listener="#{productEdit.uploadPhotos()}"></f:ajax>
+			</h:inputFile>
+		</h:form>
+		
+		<script>
+			$(() => {
+				$('#uploadPhotos').click(() => {
+					$('.uploadPhotos').click()
+					return false
+				})
+			})
+		</script>
+		
+
+	</ui:define>
+
+</ui:composition>
 </html>
