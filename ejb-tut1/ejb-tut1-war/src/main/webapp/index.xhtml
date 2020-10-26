@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>Hello EJB</title>
+</h:head> 
+<body> 
+
+	<h1>Hello EJB</h1>
+
+	<h:form>
+		
+		<h:inputText value="#{greetBean.name}" />
+		<h:commandButton action="#{greetBean.greet()}" value="Greet" />
+	</h:form>
+	
+	<hr />
+	
+	<h3>Message</h3>
+	
+	<h:outputText value="#{greetBean.message}" />
+
+</body> 
+</html>
