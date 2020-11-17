@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>EJB Tut2</title>
+</h:head> 
+<body> 
+
+	<h1>Hello EJB</h1>
+	
+	<p>
+		<h:outputText value="#{helloBean.message}" />
+	</p>
+	
+	<hr />
+	
+	<h3>Stateful Counter</h3>
+	
+	<h:form>
+		
+		<div>
+			<h:outputText value="#{helloBean.count}" />
+		</div>
+		
+		<h:commandButton action="#{helloBean.countUp()}" value="Count Up" />
+	
+	</h:form>
+	
+	<hr />
+	
+	
+	<h3>Singleton Bean</h3>
+	
+	<p>
+		<h:outputText value="#{helloBean.singletonMessage}" />
+	</p>
+
+</body> 
+</html>
