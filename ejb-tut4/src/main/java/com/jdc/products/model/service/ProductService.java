@@ -2,9 +2,12 @@ package com.jdc.products.model.service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Future;
 
+import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -27,7 +30,7 @@ public class ProductService {
 	private EntityManager em;
 
 	@Asynchronous
-	public void upload(Part file) {
+	public Future<Boolean> upload(Part file) {
 		
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
 			
@@ -37,9 +40,11 @@ public class ProductService {
 				createItem(line);
 			}
 			
+			return new AsyncResult<Boolean>(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return new AsyncResult<Boolean>(false);
 		
 	}
 	
@@ -72,7 +77,7 @@ public class ProductService {
 		query.setParameter("product", p.getId());
 		query.setParameter("name", string);
 		
-		Item i = query.getSingleResult();
+		Item i = getSingleResult(query);
 		
 		if(null == i) {
 			i = new Item();
@@ -92,7 +97,7 @@ public class ProductService {
 		query.setParameter("brand", b.getId());
 		query.setParameter("name", string);
 		
-		Product p = query.getSingleResult();
+		Product p = getSingleResult(query);
 		if(null == p) {
 			p = new Product();
 			p.setBrand(b);
@@ -109,7 +114,7 @@ public class ProductService {
 		query.setParameter("category", c.getId());
 		query.setParameter("name", string);
 		
-		Brand b = query.getSingleResult();
+		Brand b = getSingleResult(query);
 		
 		if(null == b) {
 			b = new Brand();
@@ -125,7 +130,7 @@ public class ProductService {
 		
 		TypedQuery<Category> query = em.createNamedQuery("Category.findByName", Category.class);
 		query.setParameter("name", string);		
-		Category c = query.getSingleResult();
+		Category c = getSingleResult(query);
 		
 		if(null == c) {
 			c = new Category();
@@ -135,9 +140,44 @@ public class ProductService {
 
 		return c;
 	}
+	
+	private<T> T getSingleResult(TypedQuery<T> query) {
+		
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("No Entity");
+		}
+		
+		return null;
+	}
 
 
 	public List<Item> search(int category, int brand, String product) {
-		return null;
+		
+		StringBuffer sb = new StringBuffer("select i from Item i where 1 = 1");
+		Map<String, Object> params  = new HashMap<>();
+		
+		if(category > 0) {
+			sb.append(" and i.product.brand.category.id = :categoryId");
+			params.put("categoryId", category);
+		}
+		
+		if(brand > 0) {
+			sb.append(" and i.product.brand.id = :brandId");
+			params.put("brandId", brand);
+		}
+		
+		if(null  != product && !product.isBlank()) {
+			sb.append(" and i.product.name like :product");
+			params.put("product", product.concat("%"));
+		}
+		
+		TypedQuery<Item> query = em.createQuery(sb.toString(), Item.class);
+		for(String key : params.keySet()) {
+			query.setParameter(key, params.get(key));
+		}
+		
+		return query.getResultList();
 	}
 }

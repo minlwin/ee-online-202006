@@ -1,7 +1,9 @@
 package com.jdc.products.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -50,11 +52,24 @@ public class ProductBean implements Serializable {
 	}
 	
 	public void upload() {
+		Future<Boolean> result = service.upload(file);
 		
+		try {
+			if(result.get()) {
+				category = 0;
+				brand = 0;
+				product = "";
+				categories = catService.findAll();
+				search();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void changeCategory() {
 		brand = 0;
+		brands = new ArrayList<>();
 		if(category > 0) {
 			brands = brandService.findByCategory(category);
 		}

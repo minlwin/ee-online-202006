@@ -7,6 +7,7 @@
 
 <h:head>
 	<title>	Asynchronous Upload</title>
+	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 	
 	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
@@ -24,7 +25,7 @@
 		<!-- Search Form -->
 		<div class="card">
 			<div class="card-body">
-				<h:form styleClass="form">
+				<h:form id="searchForm" styleClass="form">
 					
 					<div class="form-row">
 						<div class="col">
@@ -74,7 +75,7 @@
 		</div>
 		
 		<!-- Result Table -->
-		<h:dataTable id="resultTable" value="#{productBean.list}" var="p" styleClass="table">
+		<h:dataTable id="resultTable" value="#{productBean.list}" var="p" styleClass="table mt-4">
 		
 			<h:column>
 				<f:facet name="header">Category</f:facet>
@@ -96,13 +97,17 @@
 				#{p.name}
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Price</f:facet>
+			<h:column styleClass="text-right">
+				<f:facet name="header">
+					<h:outputText value="Price" styleClass="text-right d-block" />
+				</f:facet>
 				#{p.price}
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Agent Price</f:facet>
+			<h:column styleClass="text-right">
+				<f:facet name="header">
+					<h:outputText value="Agent Price" styleClass="text-right d-block" />
+				</f:facet>
 				#{p.agentPrice}
 			</h:column>
 		</h:dataTable>
@@ -110,7 +115,7 @@
 		
 		<h:form styleClass="d-none" enctype="multipart/form-data">
 			<h:inputFile value="#{productBean.file}" styleClass="fileChooser">
-				<f:ajax execute="@this" render="@all" listener="#{productBean.upload()}"></f:ajax>
+				<f:ajax execute="@this" render="resultTable searchForm" listener="#{productBean.upload()}"></f:ajax>
 			</h:inputFile>
 		</h:form>
 	
