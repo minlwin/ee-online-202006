@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<h:head>
+	
+	<title>EJB Timer</title>
+	
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+	
+	<h:outputStylesheet library="css" value="bootstrap.min.css"></h:outputStylesheet>
+</h:head> 
+<body> 
+
+
+	<div class="container">
+	
+		<h3 class="mt-4">Timer Demo</h3>
+		
+		<h:form styleClass="form-inline">
+			
+			<div class="form-group mr-2">
+				<h:inputText styleClass="form-control" value="#{programmaticTimerConfig.timerInfo.name}" p:placholder="Timer Name" />
+			</div>
+			
+			<div class="form-group mr-2">
+				<h:inputText styleClass="form-control" value="#{programmaticTimerConfig.timerInfo.interval}" p:type="number" p:placholder="Timer Intrval" />
+			</div>
+			
+			<div class="form-group mr-auto">
+				<h:commandButton action="#{programmaticTimerConfig.save()}" value="Register" styleClass="btn btn-danger" />
+			</div>
+
+			<h:link outcome="/index" value="Reaload" styleClass="btn btn-outline-danger" />
+		</h:form>
+		
+		<h:dataTable styleClass="table mt-4" value="#{timerDemoBean.messages}" var="m">
+		
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{m.id}" />
+			</h:column>
+		
+			<h:column>
+				<f:facet name="header">Time</f:facet>
+				<h:outputText value="#{m.time}" >
+					<f:convertDateTime type="localDateTime" pattern="HH:mm ss"/>
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Message</f:facet>
+				<h:outputText value="#{m.message}" />
+			</h:column>
+
+		</h:dataTable>
+	</div>
+	
+
+</body> 
+</html>
