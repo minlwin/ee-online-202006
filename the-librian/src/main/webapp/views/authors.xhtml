@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+       
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="page-title">Authors</ui:define>
+		
+		<ui:define name="content">
+			
+			<!-- Header -->
+			<div class="header">
+				
+				<h4>Author Management</h4>
+				
+				<div>
+					<a href="#" class="btn btn-primary mr-2">
+						<i class="fa fa-print mr-2"></i> Export
+					</a>
+					<a href="#" class="btn btn-primary">
+						<i class="fa fa-plus mr-2"></i> Add New
+					</a>
+				</div>
+				
+			</div>
+			
+			<!-- Search Box -->
+			<div class="card mt-4">
+				<div class="card-body">
+				
+					<h:form styleClass="form">
+					
+						<div class="form-row">
+						
+							<!-- Country -->
+							<div class="col-3">
+								<div class="form-group">								
+									<label>Country</label>
+									<input type="text" placeholder="Search Country" class="form-control" />
+								</div>
+							</div>
+
+							<!-- Name -->
+							<div class="col-3">
+								<div class="form-group">								
+									<label>Author Name</label>
+									<input type="text" placeholder="Search Name" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="col">
+								<div class="form-group">
+								
+									<a href="#" class="btn btn-primary" style="margin-top: 2em">
+										<i class="fa fa-search mr-2"></i>Search
+									</a>
+								</div>
+							</div>					
+							
+						</div>
+					
+					</h:form>
+				
+				</div>
+			</div>
+			
+			
+			<!-- Result Table -->
+			<table class="table mt-4">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Gender</th>
+						<th>Country</th>
+						<th>Date of Birth</th>
+						<th>Title</th>
+						<th></th>
+					</tr>
+				</thead>
+			</table>
+			
+		</ui:define>
+	
+	</ui:composition>
+</html>

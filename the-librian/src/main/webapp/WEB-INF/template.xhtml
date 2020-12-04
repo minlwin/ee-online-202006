@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+	<title>The Librarian | <ui:insert name="page-title"></ui:insert> </title>
+	
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="font-awesome.min.css"></h:outputStylesheet>
+	
+	<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../resources/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="/the-librian/resources/css/application.css" />
+	
+
+	<h:outputScript library="js" name="jquery.min.js"></h:outputScript>
+	<h:outputScript library="js" name="popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+	
+
+</h:head> 
+<body> 
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+	
+		<!-- Side Bar -->
+		<div id="sidebar">
+			
+			<div class="header">
+				<span>The Librarian</span>
+			</div>
+			
+			<div class="menu">
+			
+				<ul>
+					<li>
+						<h:link outcome="/index">
+							<i class="fa fa-home"></i> Home
+						</h:link>
+					</li>
+					<li>
+						<h:link outcome="/views/members">
+							<i class="fa fa-users"></i> Members Management
+						</h:link>
+					</li>
+					<li>
+						<h:link outcome="/views/books">
+							<i class="fa fa-book"></i> Books Management
+						</h:link>
+					</li>
+					<li>
+						<h:link outcome="/views/authors">
+							<i class="fa fa-user-o"></i> Author Management
+						</h:link>
+					</li>
+				</ul>
+			</div>
+		
+		</div>
+		
+		<!-- Content -->
+		<div id="content">
+		
+			<ui:insert name="content">
+			
+			
+			</ui:insert>
+		
+		</div>
+	
+	</div>
+
+</body> 
+</html>
