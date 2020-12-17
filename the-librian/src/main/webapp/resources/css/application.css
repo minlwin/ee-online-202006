@@ -40,8 +40,8 @@ html, body {
 	color: white;
 	text-decoration: none;
 	display: block;
-	padding: 20px;
-	font-size: 1.2em;
+	padding: 16px 20px;
+	font-size: 1.1em;
 }
 
 #sidebar .menu a:hover {
@@ -52,6 +52,11 @@ html, body {
 #sidebar .menu a.active {
 	background-color: white;
 	color: black;
+}
+
+.subMenu a {
+	padding-left: 50px !important ;
+	background-color: #00796b;
 }
 
 #sidebar .menu a > i {

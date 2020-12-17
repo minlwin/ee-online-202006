@@ -40,22 +40,59 @@
 				<ul>
 					<li>
 						<h:link outcome="/index">
-							<i class="fa fa-home"></i> Home
+							<i class="fa fa-home"></i> Library Home
 						</h:link>
 					</li>
 					<li>
-						<h:link outcome="/views/members">
-							<i class="fa fa-users"></i> Members Management
+						<h:link outcome="/index">
+							<i class="fa fa-history"></i> Rant Books
 						</h:link>
 					</li>
 					<li>
-						<h:link outcome="/views/books">
-							<i class="fa fa-book"></i> Books Management
+						<h:link outcome="/index">
+							<i class="fa fa-bolt"></i> No Returns
 						</h:link>
 					</li>
 					<li>
-						<h:link outcome="/views/authors">
-							<i class="fa fa-user-o"></i> Author Management
+						<a class="dropdown-toggle" data-toggle="collapse" href="#memberMenu">
+							<i class="fa fa-users"></i> Members
+						</a>
+						<ul id="memberMenu" class="subMenu collapse">
+							<li>
+								<h:link outcome="/views/member-types" value="Member Types"/>
+							</li>
+							<li>
+								<h:link outcome="/views/members" value="Members"/>
+							</li>
+							<li>
+								<h:link outcome="/views/accounts" value="Accounts"/>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#masterMenu" class="dropdown-toggle" data-toggle="collapse">
+							<i class="fa fa-database"></i> Master Data
+						</a>
+						<ul id="masterMenu" class="subMenu collapse">
+							<li>
+								<h:link outcome="/views/categories" value="Categories"/>
+							</li>
+							<li>
+								<h:link outcome="/views/authors" value="Authors"/>
+							</li>
+							<li>
+								<h:link outcome="/views/books" value="Books"/>
+							</li>						
+						</ul>
+					</li>
+					<li>
+						<h:link outcome="/index">
+							<i class="fa fa-user-circle"></i> Profile
+						</h:link>
+					</li>
+					<li>
+						<h:link outcome="/index">
+							<i class="fa fa-sign-out"></i> Sign Out
 						</h:link>
 					</li>
 				</ul>
